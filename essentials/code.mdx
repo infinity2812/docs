@@ -1,37 +1,64 @@
 ---
-title: 'Code Blocks'
-description: 'Display inline code and code blocks'
-icon: 'code'
+title: "Why should I use it?"
+icon: "code"
 ---
 
-## Basic
+## To understand the answer to this question, first, we need to learn how Kamino APY works-
 
-### Inline Code
+Kamino earns yield from swap fees generated when users trade tokens in a liquidity pool, and additional rewards from DEX incentives (e.g., token rewards provided by the DEX to attract liquidity). There are partnership incentives, too.
 
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
+To calculate APY - **Vault APY**:
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
+- APY from trading fees and DEX incentives.
+- Calculated based on the **previous 24 hours of trading volume**.
+- Fluctuates with trading activity and price range efficiency
 
-### Code Block
+**Kamino APY**:
 
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+- APY from external incentives (e.g., bonuses or tokens distributed by Kamino partners).
+- May include claimable or auto-compounded rewards.
 
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
+TOTAL APY= VAULT APY \+ KAMINO APY Remember this doesnt involve impermanent loss as mentioned in the docs-
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+This creates a difference in borrowing APY and Supply APY(lending APY \+ Incentives APY)
+
+why is this not **24.62%** which is beneficial for both parties i.e. lenders and borrowers? also, this is just not Kamino-specific you can see stats in any lending protocol for ex- Margin fi
+
+### APY spread issue-
+
+- When prices move outside the selected range, liquidity becomes inactive, reducing trading fees hence impermanent loss occurs.
+- Automated rebalancing ensures positions stay in range but incurs costs from swaps and potential impermanent loss.
+- Sudden market volatility can lead to periods of low APY if positions are frequently rebalanced.
+
+### **How PayStream Complements Kamino APY Spread**
+
+- **Improved Utilization**
+
+  PayStream redirects idle liquidity from Kamino vaults into lending opportunities when trading volumes are low.
+
+  Example: A user deposits \$10,000 in a Kamino USDC-SOL vault. If the trading volume decreases, PayStream dynamically allocates some funds into its lending pools to earn interest from borrowers.
+
+  Kamino liquidity providers can opt to lend out unused liquidity via PayStream's P2P matching or pooled lending, ensuring steady income even during market lulls.
+
+  **Impact**:
+  - Liquidity providers enjoy stable returns without relying solely on DEX trading fees.
+  - Kamino retains its user base by offering enhanced utility for its vaults through PayStream.
+- **Programmable Yield Management**
+
+  Borrowers locking collateral in Kamino vaults can use these assets as security for loans on PayStream while repaying via:
+  - **Linear Streams**: Steady repayment over a defined period.
+  - **Cliff Streams**: Lump-sum repayment after a grace period.
+  - **Step-Wise Streams**: Periodic repayments, ideal for milestone-based payouts.
+
+  New user segments (freelancers, startups, DAOs) can access Kamino indirectly through PayStream’s flexible repayment options. Ex- For a \$10,000 loan with a \$15,000 collateral at 150% LTV(assumed):
+
+  After repaying \$5,000, the required collateral is reduced to \$7,500 to maintain 150% LTV.
+- **Stable Returns**
+
+  PayStream can direct liquidity to lending pools during periods of low trading volume, providing liquidity providers with a stable yield alternative.
+
+\<aside\> 💡
+
+Conclusion- If a user uses Paystream over any lending PLF be it Kamino, or Margin-fi, during P2P(peer-to-peer) matching Paystream engine can find a suitable Borrower/lender both parties will get the best rates(in most cases it is the average of both APYs) if not it will revert to the traditional lending/liquidity pools.
+
+\</aside\>
