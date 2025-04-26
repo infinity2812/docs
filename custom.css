@@ -1,6 +1,6 @@
 img[src*="/logo/light.svg"],
 img[src*="/logo/dark.svg"] {
-  width: 180px !important;
+  width: 260px !important;
   height: auto !important;
-  max-height: 60px;
+  max-height: 90px;
 } 
