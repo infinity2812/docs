@@ -1,3 +1,8 @@
+header, .navbar, .mint-navbar, .nav, .header {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
 img[src*="/logo/light.svg"],
 img[src*="/logo/dark.svg"] {
   width: 260px !important;
