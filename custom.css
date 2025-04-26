@@ -5,10 +5,7 @@ header, .navbar, .mint-navbar, .nav, .header {
 
 img[src*="/logo/light.svg"],
 img[src*="/logo/dark.svg"] {
-  width: 260px !important;
+  width: 300px !important;
   height: auto !important;
-  max-height: 90px;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  margin-top: 0 !important;
+  max-height: 110px;
 } 
