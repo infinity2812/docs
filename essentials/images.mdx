@@ -1,21 +1,60 @@
 ---
-title: 'Images and Embeds'
-description: 'Add image, video, and other HTML elements'
-icon: 'image'
+title: "What's the business model of Paystream?"
+icon: "image"
+description: "
+
+
+"
 ---
 
 <img
-  style={{ borderRadius: '0.5rem' }}
+  style={{ borderRadius:"0.5rem" }}
   src="https://mintlify-assets.b-cdn.net/bigbend.jpg"
 />
 
-## Image
+### **1. Streaming Fee Structure**
 
-### Using Markdown
+PayStream charges fees for setting up and managing payment streams:
 
-The [markdown syntax](https://www.markdownguide.org/basic-syntax/#images) lets you add images using the following code
+1. **Basic Streams**:
+   - **Fee**: 0.15% of the total stream amount.
+   - **Use Cases**: Simple, continuous payment streams (e.g., daily salary payments or freelancer payments).
 
-```md
+   **Example**:
+   - Total Stream Amount: \$1,000
+   - Fee = 1,000×0.0015=\$1.50
+2. **Custom Streams**:
+   - **Fee**: 0.5% of the total stream amount.
+   - **Use Cases**: Advanced streams with programmable curves (e.g., milestone-based payments or non-linear repayment schedules).
+
+   **Example**:
+   - Total Stream Amount: \$2,000
+   - Fee = 2,000×0.005=\$10.00
+
+Note- Fee structutre still has to be decided upon, so don't consider it a hard-and-fast rule\!
+
+### **2. Lending Fee Structure**
+
+PayStream generates revenue by charging a spread on the interest rate between borrowers and lenders via its **P2P matching engine**.
+
+1. **Borrower Interest Rate**:
+   - Borrowers pay a fixed or dynamic interest rate (e.g., 5% APY).
+2. **Lender Return**:
+   - Lenders receive a slightly lower rate (e.g., 4% APY).
+3. **Platform Spread**:
+   - PayStream keeps the difference (1% APY in this example) as its revenue.
+
+   **Example**:
+   - Loan Amount: \$100,000
+   - Borrower Rate: 5% APY = 5,000 annual interest.
+   - Lender Rate: 4% APY = 4,000 annual return.
+   - **Revenue** = Borrower Interest − Lender Return = 5,000−4,000=\$1,000.
+
+### When will the protocol be sustainable?
+
+So as of right now considering 4 months of testnet development and after that, we can start rolling out on the mainnet in multiple phases(closed alpha, closed beta, beta, Final launch) This is a theoretical overview of future expenses and revenue model(after final launch) which are completely predicted as of now-
+
+```
 ![title](/path/image.jpg)
 ```
 
@@ -31,29 +70,15 @@ To get more customizability with images, you can also use [embeds](/writing-cont
 
 ## Embeds and HTML elements
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-  style={{ width: '100%', borderRadius: '0.5rem' }}
-></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width:"100%",borderRadius:"0.5rem" }} />
 
 <br />
 
 <Tip>
-
-Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html). This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.
-
+  Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html). This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.
 </Tip>
 
-### iFrames
-
-Loads another HTML page within the document. Most commonly used for embedding videos.
+### 
 
 ```html
-<iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>
 ```
