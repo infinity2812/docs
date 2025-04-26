@@ -14,7 +14,7 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Get Started",
             "pages": [
               "introduction",
               "quickstart",
@@ -22,7 +22,7 @@
             ]
           },
           {
-            "group": "Know more",
+            "group": "Essentials",
             "pages": [
               "essentials/markdown",
               "essentials/code",
