@@ -98,5 +98,8 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
+  },
+  "custom": {
+    "css": ["custom.css"]
   }
 }
