@@ -42,8 +42,8 @@
         },
         {
           "anchor": "Community",
-          "href": "https://linktr.ee/Paystream.finance",
-          "icon": "slack"
+          "href": "https://t.me/paystreamfi",
+          "icon": "/images/telegram_icon_dark_bg.png"
         }
       ]
     }
@@ -56,7 +56,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:paystreamlabs@gmail.com"
       }
     ],
     "primary": {
