@@ -22,6 +22,12 @@
             ]
           },
           {
+            "group": "Resources",
+            "pages": [
+              "development"
+            ]
+          },
+          {
             "group": "Essentials",
             "pages": [
               "essentials/markdown",
