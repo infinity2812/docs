@@ -17,7 +17,8 @@
             "group": "Introduction",
             "pages": [
               "introduction",
-              "quickstart"
+              "quickstart",  "essentials/markdown",
+              "essentials/code"
               
             ]
           },
@@ -26,15 +27,8 @@
             "pages": [
               "development"
             ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code"
-             
-            ]
           }
+          
         ]
       }
     ],
