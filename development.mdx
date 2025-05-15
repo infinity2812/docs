@@ -1,16 +1,45 @@
 ---
-title: " Payment Streaming"
+title: "Risks and Security"
+description: "When using Paystream Private-beta version users should be aware of these issues"
 ---
 
-Paystream also enables users to create payment agreements that distribute funds over time, based on pre-defined mathematical curves. TLDR- on-chain escrow contracts for freelancers, DAOs etc
 
-**Stream Types**:
+### Financial Risks
 
-- **Linear**: Distributes payments at a steady rate over a set duration.
-- **Cliff**: Starts payments after a predefined delay.
-- **Step-Wise**: Releases payments at regular intervals, like weekly or monthly.
-- **Custom curves** are also provided(0.5% fees as compared to standard 0.15%)
+**Interest** **Rate Risk**
 
-Here\`s a highly simplified flow of how payment streaming works-
+Interest rate risk arises from the potential for market rates to diverge from the P2P rate of your loan over time. Borrowing or lending at a P2P rate for a specific duration may result in your loan being more expensive or cheaper than the prevailing market rate. The sensitivity to interest rate changes increases with loan duration which in this beta is 7 days.
 
-<img src="/images/flowchart-4.webp" alt="Paystream Flowchart 4" style={{ width: "100%", maxWidth: "1000px", display: "block", margin: "2rem auto" }} />
+### [**​**](https://docs.loopscale.com/resources/risks-and-security#liquidity-risk)
+
+**Liquidity Risk**
+
+The diverse range of collateral accepted by Paystream can expose users to liquidity risk. Different tokens have varying levels of underlying liquidity and availability across trading venues. This risk of illiquidity of collateral should be considered when lending.
+
+### [**​**](https://docs.loopscale.com/resources/risks-and-security#liquidation-risk)
+
+**Liquidation Risk**
+
+Loans on Paystream are subject to both price and payment-based liquidations. If the collateral value relative to the principal plus accrued interest falls below the liquidation threshold, the collateral may be seized. In such cases, repayments made will be forfeited, and the collateral will be transferred to the liquidator. Borrowers should closely monitor their loan’s health ratio, as a ratio of 0% indicates eligibility for liquidation. To avoid liquidation, borrowers can repay a portion of the loan or add more collateral.
+
+### [**​**](https://docs.loopscale.com/resources/risks-and-security#time-risk)
+
+**Time Risk**
+
+Loans that are not set up to 7 days automatically or if there are bot issues it may be subject to liquidation early. This will result in the loss of collateral and is unrecoverable.
+
+## [**​**](https://docs.loopscale.com/resources/risks-and-security#operational-risks)
+
+### **Operational Risks**
+
+### [**​**](https://docs.loopscale.com/resources/risks-and-security#smart-contract-risk)
+
+**Smart Contract Risk**
+
+Contracts inherently risk containing vulnerabilities that can be exploited by attackers, including compromised or manipulated external dependencies and economic incentives. As the contracts are not audited we have implemented a SEAT functionality which allows only whitelisted addresses can interact with the protocol
+
+### [**​**](https://docs.loopscale.com/resources/risks-and-security#oracle-price-risk)
+
+**Oracle Price Risk**
+
+Any Paystream loan may be connected to an oracle, as established by the borrower or lender in the initial order. For all loans on Paystream, **Pyth** have been determined by the Paystream team. All oracles are subject to price manipulation or incorrect inputs, falsely reducing or increasing asset values, leading to premature liquidations or bad debt. Oracle quality, including safety, liveness, centralized control, and precision and frequency of price updates, should be considered in assessing risk.
