@@ -19,16 +19,15 @@
               "introduction",
               "quickstart",  "essentials/markdown",
               "essentials/code"
-              
             ]
           },
           {
             "group": "Resources",
             "pages": [
-              "development"
+              "development",
+              "how-to-use"
             ]
           }
-          
         ]
       }
     ],
