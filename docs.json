@@ -25,7 +25,10 @@
             "group": "Resources",
             "pages": [
               "development",
-              "how-to-use"
+              "how-to-lend",
+              "how-to-borrow",
+              "how-to-repay",
+              "how-to-withdraw"
             ]
           }
         ]
