@@ -1,0 +1,77 @@
+---
+title: "PayStream Security Audit Report"
+author: "Maushish Yadav"
+date: "May 2025"
+---
+
+# Security Audit Report: PayStream Protocol
+
+**Prepared By:**  
+Maushish Yadav  
+_DeFi Security Researcher | Auditor | Founder @PayStream Labs_  
+
+## Audit Overview
+
+This report details the results of a static analysis conducted on the PayStream DeFi lending protocol using the tools **X-Ray (v0.0.6)** and **Radar**.  
+Our audit spanned three primary program modules: `drift_optimizer`, `lib`, and `paystream-v1`.  
+The primary objective was to identify unsafe patterns, missing validations, and account mismanagement across Solana smart contracts that constitute the core protocol.
+
+## Tooling & Methodology
+
+- **Tools Used:** X-Ray v0.0.6, Radar  
+- **Techniques:**  
+  - IR file analysis  
+  - Instruction graph traversal  
+  - Owner/signer validation  
+  - Unsafe `AccountInfo` pattern detection  
+  - Collateral access audits  
+- **Scope:** Drift Optimizer, Core Lending Program, Utility Libraries
+
+## Findings
+
+### Drift Optimizer
+
+- **Vulnerability:** Missing `owner` check on `spot_market` account  
+- **Location:** `get_apys.rs`, line 26  
+- **Risk:** Unauthorized account manipulation; deserialization of arbitrary data  
+- **Mitigation:** Add explicit owner validation matching expected protocol program
+
+### Lib Module
+
+- **Vulnerabilities:** None  
+- **Status:** All logic modules and dependencies passed pointer and transformation analysis cleanly.
+
+### Core Protocol (`paystream-v1`)
+
+- **Total Detected:** 33 vulnerabilities  
+- **Patterns Observed:**  
+  - Repeated absence of signer/owner checks on critical account inputs  
+  - Unsafe use of unchecked `AccountInfo<'info>` under `CHECK:` macros  
+  - Multiple validator bypass risks in borrow, repay, and withdraw flows  
+
+#### High-Risk Locations
+
+- `deposit.rs`: No signer validation on `protocol_vault_authority`  
+- `lend.rs`: Improper validation of protocol and vault accounts  
+- `borrow.rs`: Data leakage and injection risks due to unchecked accounts  
+- `withdraw.rs`: Deserialization of `collateral_market` without secure constraints  
+- `liquidate_by_ltv.rs`: Direct liquidatee access without auth constraints  
+
+## Recommendations
+
+1. Apply `.is_signer` and `.owner == expected_program_id` checks across all cross-program and `CHECK:` inputs  
+2. Replace unchecked `AccountInfo` fields with validated `Account` or `InterfaceAccount` where feasible  
+3. For all `#[account(...)]` constraints, enforce explicit runtime assertions  
+4. Protect `dangerously_mutate_*` functions with hardcoded access lists or role-based checks
+
+## Security References
+
+- [Missing Owner Checks](https://github.com/project-serum/sealevel-attacks/tree/master/programs/2-owner-checks)  
+- [Missing Signer Authorization](https://github.com/project-serum/sealevel-attacks/tree/master/programs/0-signer-authorization)  
+- [The Wormhole Hack Analysis](https://medium.com/coinmonks/the-wormhole-hack-how-soteria-detects-the-vulnerability-automatically-eb0f433e8071)
+
+## Conclusion
+
+While PayStream demonstrates significant innovation in on-chain lending and liquidity optimization, security hardening remains crucial before scaling further.  
+Patching signer and owner validation gaps should be prioritized to mitigate protocol-level risks, particularly around token streaming and borrowing logic.  
+A formal verification of economic invariants and runtime constraints is recommended before public audits.
