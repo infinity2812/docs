@@ -46,13 +46,19 @@
           "anchor": "Community",
           "href": "https://t.me/paystreamfi",
           "icon": "telegram"
+        },
+        {
+          "anchor": "PayStream.finance",
+          "href": "https://paystream.finance",
+          "icon": "globe"
         }
       ]
     }
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "link": "https://paystream.finance"
   },
   "navbar": {
     "links": [
