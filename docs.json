@@ -46,7 +46,7 @@
               "under-the-hood",
               "matching-engine",
               "liquidation",
-              { "file": "p2p-rate", "name": "Interest Rate Model (P2P Rate)" },
+              "p2p-rate",
               "optimizers"
             ]
           },
