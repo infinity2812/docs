@@ -5,6 +5,8 @@ description: "Learn about the Lending Pool in PayStream's LLP."
 
 A **shared liquidity system** with the following components:
 
+![lending-pool](./images/lending-pool.png)
+
 ---
 
 ## 1. Lenders
@@ -42,7 +44,7 @@ A **shared liquidity system** with the following components:
 
 ---
 
-## 📊 Global Liquidity Index Explained
+## Global Liquidity Index Explained
 
 The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the GLI updates to reflect that yield.
 
@@ -59,7 +61,7 @@ lenderBalance = deposit × (GLI_now / GLI_entry)
 
 ---
 
-## 📈 Total Borrow-Rate Formula
+## Total Borrow-Rate Formula
 
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
@@ -77,7 +79,7 @@ liquidityRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 
 ---
 
-## 🔄 Liquidity-Index Update Formulas
+##Liquidity-Index Update Formulas
 
 ### For Lenders
 
@@ -121,5 +123,4 @@ interest = principal * (BLI_now_k / BLI_entry_k - 1)
 ```
 
 Note - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
-
-## Note - Both *GLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 
+-Both *GLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 

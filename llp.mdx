@@ -3,64 +3,10 @@ title: "Overview"
 description: "Overview of PayStream's Leveraged Liquidity Provisioning (LLP) system."
 ---
 
+![LLP Main](./images/llp-liq.png)
+
 # Overview
 
-```mermaid
-flowchart TD
-    %% Entry Point
-    A[Start - Telegram Bot Interface]
-    
-    %% Lender Flow
-    A --> B[Lender]
-    B --> B1[Deposit Funds in Lending Pool]
-    B1 --> B2[Interest Earned per Block]
-    B2 --> B3[Interest Distributed Proportionally]
-    B1 --> B4[Utilization Ratio Enforced - Max M%]
-    B1 --> E1[0.05 SOL Rent Fee - Refundable]
-    E1 --> E2[Min 0.2 SOL Recommended]
-    
-    %% Investor Flow
-    A --> C[Investor]
-    C --> C1[Choose Investment Method]
-    C1 --> C2{Manual or Auto}
-    C2 -->|Manual| C3[Select Pool & Invest]
-    C2 -->|Auto| C4[Select Wallet to Copy]
-    C4 --> C5[Set Max Leverage Cap]
-    C3 --> C6[Swap SOL into Pool Tokens]
-    C5 --> C6
-    C6 --> C7[Invest into DLMM or DAMM V2 Pool]
-    C7 --> C8[Optional: Enable Rebalancing]
-    C8 --> C9[Maintain Token Ratio]
-    C9 --> C10[Rebalancing Fees Apply]
-    
-    %% Leverage Path (Only if Leverage is Used)
-    C7 --> L1{Leverage Used?}
-    L1 -->|Yes| L2[Calculate LTV]
-    L2 --> L3[Monitor LTV Threshold]
-    L3 --> L4{LTV > Threshold?}
-    L4 -->|Yes| L11[Alert User - Liquidation Risk]
-    L11 --> L12{User Action}
-    L12 -->|No Action| L5[Trigger Partial Liquidation]
-    L12 -->|Deposit More Funds| L13[Add Margin to Position]
-    L13 --> L14[Recalculate LTV]
-    L14 --> L10[Continue Monitoring]
-    L5 --> L6{Risk Persists?}
-    L6 -->|Yes| L7[Trigger Full Liquidation]
-    L4 -->|No| L10[Continue Monitoring]
-    L2 --> L8{Pool Utilization High?}
-    L8 -->|Yes| L9[Deleveraging All Positions]
-    
-    %% Fees Note
-    C6 --> E1
-    
-    %% Meteora Integration
-    C6 --> F[Meteora Integration]
-    F --> F1[Token Swap]
-    F --> F2[Pool Participation]
-    F --> F3[DLMM / DAMM V2 Support]
-```
-
----
 
 ### Lenders
 
