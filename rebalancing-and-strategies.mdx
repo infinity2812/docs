@@ -5,11 +5,11 @@ description: "Rebalancing policy and available strategies in PayStream's LLP."
 
 Rebalancing, if opted, will be triggered by an off-chain monitoring system (also responsible for triggering liquidation).
 
-## 🔁 Rebalancing Policy
+## Rebalancing Policy
 
 ---
 
-### ⚙️ Default Behavior
+### Default Behavior
 
 - **No rebalancing is applied by default**
 - Users retain full control over **non-leveraged positions**
@@ -35,7 +35,7 @@ These strategies are safer and more predictable, making them suitable for initia
 
 ## Supported Strategies Overview
 
-### 🔵 Spot LP Strategy
+### Spot LP Strategy
 A straightforward strategy where users provide equal value of two tokens into a liquidity pool.
 
 - Ideal for users who want balanced exposure to both assets and earn fees from both sides of the pair.
@@ -44,7 +44,7 @@ A straightforward strategy where users provide equal value of two tokens into a 
 - Auto-rebalancing is supported to maintain bin balance over time.
 - Higher risk of impermanent loss during strong price swings.
 
-### ⚫ Single-Sided LP Strategy
+### Single-Sided LP Strategy
 In this strategy, users provide liquidity using only one token, instead of a 50/50 split.
 
 - Ideal for users who believe strongly in one token and don’t want to sell or split their capital.
@@ -52,7 +52,7 @@ In this strategy, users provide liquidity using only one token, instead of a 50/
 - Users choose the price range they want to cover.
 - Auto-rebalancing not supported, and positions require more manual control.
 
-### 🟡 Dual Bin Strategy
+### Dual Bin Strategy
 This is the default strategy used by Cleopetra. It combines two positions for smarter liquidity deployment:
 
 - The Main Position holds most liquidity, optimized for fee generation.
@@ -60,7 +60,7 @@ This is the default strategy used by Cleopetra. It combines two positions for sm
 - Helps prevent unused tokens from sitting idle by always keeping them active in fee-earning zones.
 - Efficient for volatile markets and reduces slippage during imbalance.
 
-### 🔁 Bid-Ask (SOL) Strategy
+### Bid-Ask (SOL) Strategy
 A dynamic DCA-style strategy using SOL as the base asset.
 
 - Gradually sells SOL for another token (e.g., USDC) as price increases across a custom range.
@@ -68,7 +68,7 @@ A dynamic DCA-style strategy using SOL as the base asset.
 - Useful for those who want to sell into strength and reduce SOL exposure over time.
 - Highly capital-efficient and good for high-volatility markets.
 
-### 🔁 Bid-Ask (Token) Strategy
+### Bid-Ask (Token) Strategy
 Same logic as SOL Bid-Ask, but works in reverse.
 
 - Starts with tokens like BONK or JUP and gradually sells them for SOL as price rises.
@@ -76,7 +76,7 @@ Same logic as SOL Bid-Ask, but works in reverse.
 - Helps reduce slippage and capture more value at higher price bands.
 - Great for farming volatile tokens with an exit strategy built-in.
 
-### 🟩 Curve LP Strategy
+### Curve LP Strategy
 A strategy optimized for stablecoin pairs or low-volatility tokens.
 
 - Concentrates liquidity around the current market price, reducing slippage and improving trade efficiency.
@@ -84,7 +84,7 @@ A strategy optimized for stablecoin pairs or low-volatility tokens.
 - Ideal for tight-range trading pairs like USDC/USDT or low-volatility markets.
 - Reduces capital waste and improves fee capture near equilibrium prices.
 
-### 🔷 Spot Balanced Strategy
+### Spot Balanced Strategy
 A variation of Spot LP with uniform liquidity spread across the full price range.
 
 - Simple to use and great for beginners.

@@ -3,13 +3,14 @@ title: "Matching Engine"
 description: "How PayStream's matching engine works."
 ---
 
-# P2P Matching Engine
+
+
 
 PayStream's **peer-to-peer (P2P) matching engine** is the core mechanism that directly matches lenders and borrowers on the platform for more optimized interest rates.
 
 ## How the Matching Engine Works
 
-PayStream’s matching engine can be viewed as a **priority queue** or a kind of pseudo-order book for matching loans. However, unlike a traditional order book, users do *not* place bids or asks with specific interest rates. Instead, the protocol automatically determines a fair P2P interest rate (one that lies between the pool’s supply APY and borrow APY) and matches lenders to borrowers at that rate.
+PayStream’s matching engine can be viewed as a **priority queue** or a kind of **pseudo-order book** for matching loans. However, unlike a traditional order book, users do *not* place bids or asks with specific interest rates. Instead, the protocol automatically determines a fair P2P interest rate (one that lies between the pool’s supply APY and borrow APY) and matches lenders to borrowers at that rate.
 
 This means lenders and borrowers don’t negotiate rates; any available lending liquidity will be paired with borrowing demand instantly at the optimized P2P rate.
 
