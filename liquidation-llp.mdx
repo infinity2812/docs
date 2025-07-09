@@ -33,26 +33,7 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 
 ---
 
-### TL;DR for Implementation
-
-- Define two LTV thresholds:
-    - `ltv_partial` – triggers **partial liquidation**
-    - `ltv_full` – triggers **full liquidation**
-- avoid liquidation - increase your margin
-- **Trigger logic**:
-    - If `current_LTV ≥ ltv_partial` but `< ltv_full`:
-        
-        → Calculate Δ (delta) using the target LTV equation and **partially liquidate** that amount.
-        
-    - If `current_LTV ≥ ltv_full`:
-        
-        → **Fully liquidate** the remaining position.
-        
-- **Partial liquidation**:
-    - Happens **only once per cycle**, when the LTV first hits the partial threshold.
-    - borrower can add more funds after one partial liquidation to be eligible for another partial liquidation
-    - If no action is taken and the LTV worsens, **full liquidation** is triggered.
-- **Deleveraging** may also occur independently to **free up lender funds** when system-wide utilization is high.
+![develarage Workflow](./images/llp-liq.png)
 
 ### ⚙️ Trigger Rules
 
@@ -126,7 +107,8 @@ Let’s say:
 
 ### 🌊 **Deleveraging (System-Wide Risk Control)**
 
-we deleverage that is reduce the levergae (lenders fund that the borrw
+![develarage Workflow](./images/Deleverage-workflow.png)
+we deleverage that is reduce the levergae (lenders fund that the borrower have borrowed)
 
 - **Trigger**: Utilization of the lending pool exceeds a critical limit (e.g., 95%) and lenders may not be able to withdraw.
 - **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user1 has $200 borrowed, user2 $50 → both repay 10% of their debt.
