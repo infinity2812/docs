@@ -10,6 +10,8 @@ PayStream's **peer-to-peer (P2P) matching engine** is the core mechanism that di
 
 ## How the Matching Engine Works
 
+![Matching Logic Workflow](./images/matching-logic-workflow.png)
+
 PayStream’s matching engine can be viewed as a **priority queue** or a kind of **pseudo-order book** for matching loans. However, unlike a traditional order book, users do *not* place bids or asks with specific interest rates. Instead, the protocol automatically determines a fair P2P interest rate (one that lies between the pool’s supply APY and borrow APY) and matches lenders to borrowers at that rate.
 
 This means lenders and borrowers don’t negotiate rates; any available lending liquidity will be paired with borrowing demand instantly at the optimized P2P rate.
@@ -26,11 +28,13 @@ This model achieves near-100% utilization of matched funds: every P2P dollar len
 
 > Note: a borrower cannot put a borrow order greater than the available liquidity; it is blocked at the time.
 
-![Matching Logic Workflow](./images/matching-logic-workflow.png)
+
 
 ---
 
 ## Fallback to Underlying Pools
+
+![Fallback Workflow](./images/liquidation-workflow.png)
 
 The integration with underlying lending pools is a crucial aspect of PayStream’s design. Whenever a P2P match cannot be made or only partially fills, the unmatched portion of funds goes to the **underlying protocol** as a fallback.
 
