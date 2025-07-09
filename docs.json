@@ -22,17 +22,16 @@
             ]
           },
           {
-            "group": "Resources",
+            "group": "P2P Matching",
             "pages": [
-              "how-to-use",
-              "how-to-lend",
-              "how-to-borrow",
-              "how-to-repay",
-              "how-to-withdraw"
+              "matching-engine",
+              "liquidation",
+              "p2p-rate",
+              "optimizers"
             ]
           },
           {
-            "group": "LLP",
+            "group": "Leveraged Liquidity Provisioning",
             "pages": [
               "llp",
               "lending-pool",
@@ -41,13 +40,13 @@
             ]
           },
           {
-            "group": "Under the Hood",
+            "group": "Resources",
             "pages": [
-              "under-the-hood",
-              "matching-engine",
-              "liquidation",
-              "p2p-rate",
-              "optimizers"
+              "how-to-use",
+              "how-to-lend",
+              "how-to-borrow",
+              "how-to-repay",
+              "how-to-withdraw"
             ]
           },
           {
