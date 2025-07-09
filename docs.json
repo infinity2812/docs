@@ -32,6 +32,25 @@
             ]
           },
           {
+            "group": "LLP",
+            "pages": [
+              "llp",
+              "lending-pool",
+              "liquidation-llp",
+              "rebalancing-and-strategies"
+            ]
+          },
+          {
+            "group": "Under the Hood",
+            "pages": [
+              "under-the-hood",
+              "matching-engine",
+              "liquidation",
+              { "file": "p2p-rate", "name": "Interest Rate Model (P2P Rate)" },
+              "optimizers"
+            ]
+          },
+          {
             "group": "Security",
             "pages": [
               "development",

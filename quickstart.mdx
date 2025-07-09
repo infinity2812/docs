@@ -3,9 +3,17 @@ title: "How does it work?"
 description: "Paystream mainly consists of P2P engine and Underlying markets"
 ---
 
+![Workflow 1](./images/workflow-1.png)
 
-- **P2P Matching**: Directly connects borrowers and lenders to optimize rates.
-- **Fallback to Liquidity Pools**: Uses platforms like Kamino for unmatched requests to maintain liquidity and rewards for the lenders.
-- **Stream-Based Repayments**: Borrowers repay loans over time through customizable payment streams, allowing collateral to earn yield 
-- User will put collateral in stablecoin only that will go to the underlying protocol and will generate a supply rate based yield
-- User will pay the interest fee either in advance or along the repayment periods Note - if any time the user misses the repayment collateral will be reduced to ensure the protocol doesn't go into bad debt
+
+- **P2P Matching Engine**: Borrowers are directly matched with lenders in real-time, ensuring optimal interest rates for both parties without relying solely on pooled liquidity.
+
+- **Fallback to Liquidity Pools**: When a direct match isn't available, the system utilizes external liquidity platforms like Kamino to fulfill requests instantly. This ensures continuous lending opportunities and yield for idle lender capital.
+
+- **Collateralized Borrowing**: Borrowers deposit collateral to borrow funds. This collateral is deployed into underlying protocol so that it earns while backing the loan, maximizing capital efficiency.
+
+- **Protocol-Level Risk Controls**: If a borrower fails to make repayments, a proportional portion of their collateral is automatically liquidated. This ensures the protocol stays solvent and protects lenders from bad debt.
+
+- **Instant Liquidity for Lenders**: Unmatched lender capital remains liquid and accessible. Lenders can withdraw or modify their offers at any time without being locked in.
+
+- **Leveraged Liquidity Provisioning**: Users can invest in liquidity pools with leverage ranging from 1x to 4x by borrowing additional capital through PayStream and paying interest on the borrowed funds. This LLP layer will serves as both an incentive for borrowers and a fallback mechanism for unmatched P2P funds.

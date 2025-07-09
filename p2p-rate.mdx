@@ -1,0 +1,87 @@
+---
+title: "Interest Rate Model (P2P Rate)"
+description: "How PayStream determines and manages P2P interest rates."
+---
+
+# Interest Rate Model (P2P Rate)
+
+## Interest Rate Mechanics
+Paystream’s P2P lending model is designed to eliminate the APY spread typically found in traditional lending markets. In most DeFi protocols, there is a significant gap between what a borrower pays (borrow APY) and what a lender earns (supply APY). This spread is usually captured by the protocol itself.
+
+In Paystream, since lenders and borrowers are directly matched through the P2P engine, this spread is effectively removed. As a result:
+
+- Lenders earn more than they would in the underlying pool.
+- Borrowers pay less than they would in the pool.
+- No value is lost to intermediaries.
+
+This is one of the core benefits of Paystream's design — capital efficiency without protocol-imposed friction.
+
+## P2P Rate Calculation
+When a borrower is matched with a lender, the interest rate they pay is determined by the P2P rate, which is derived from the current APYs of the selected optimizer’s underlying protocol.
+
+The P2P rate is calculated as a weighted average of the supply and borrow APYs from the underlying pool:
+
+```
+APYp2p = α × APYborrow + (1 - α) × APYsupply
+```
+Where:
+- **APYborrow** is the borrow rate in the underlying protocol.
+- **APYsupply** is the supply rate in the underlying protocol.
+- **α (alpha)** is the weight parameter, typically set to 0.5, making it an even average.
+
+This ensures that:
+- The borrower pays less than they would if borrowing directly from the pool.
+- The lender earns more than they would by lending directly into the pool.
+
+### Example
+Suppose in the underlying protocol:
+- Borrow APY = 15%
+- Supply APY = 8%
+
+Then the P2P rate is:
+
+```
+APYp2p = 0.5 × 15% + 0.5 × 8% = 11.5%
+```
+So:
+- The borrower pays 11.5%, which is 3.5% lower than the original 15%.
+- The lender earns 11.5%, which is 3.5% higher than the original 8%.
+
+This structure makes the match beneficial for both sides, increasing returns for lenders while reducing costs for borrowers — a true win-win.
+
+## Per-Block Interest Accrual
+Interest in Paystream is calculated per block, rather than per second or per epoch. This allows for more accurate and real-time tracking of both borrower debt and lender yield. It also enables granular control over positions, especially useful in dynamic Solana environments where block times are fast and continuous.
+
+The per-block model ensures that:
+- Lenders are fairly compensated for the exact amount of time their capital is deployed.
+- Borrowers only pay interest for the actual time they’ve held the funds.
+
+## Average APY for Lenders
+Lenders may not always have 100% of their capital matched P2P at all times. A portion of their funds may remain in the underlying protocol while waiting for a match. As such, the yield a lender earns is the weighted average of:
+- The P2P APY (for matched funds), and
+- The fallback supply APY from the underlying protocol (for unmatched funds)
+
+For example:
+- 60% of a lender’s capital is matched P2P at 11.5% APY
+- 40% is earning fallback yield in the pool at 8% APY
+
+Then the lender's average APY is:
+
+```
+Avg APY = 0.6 × 11.5% + 0.4 × 8% = 10.1%
+```
+This reflects the actual blended return the lender earns across both yield sources, depending on how much of their liquidity is matched at any given moment.
+
+## Full Capital Utilization
+Paystream’s P2P matching model allows for 100% capital utilization when a lender is matched. Unlike pool-based systems where idle capital often sits unused, Paystream ensures that every dollar matched P2P is actively generating yield.
+
+In traditional systems:
+- Lenders often deposit into a pool and wait for borrowers.
+- Borrowers may face delays or partial fills due to pool limits.
+
+In Paystream:
+- Matched funds are immediately deployed to borrowers.
+- Unmatched funds earn base yield in the fallback protocol until needed.
+- As soon as borrower demand appears, those funds are redirected for higher-yield P2P use.
+
+This approach optimizes protocol-level capital flow and makes Paystream one of the most efficient ways to deploy or borrow capital on-chain. 

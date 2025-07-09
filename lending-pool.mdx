@@ -1,0 +1,125 @@
+---
+title: "Lending Pool"
+description: "Learn about the Lending Pool in PayStream's LLP."
+---
+
+A **shared liquidity system** with the following components:
+
+---
+
+## 1. Lenders
+
+- Deposit a base asset (e.g., **SOL**, **USDC**)
+- Receive interest over time
+
+## 2. Borrowers
+
+- Access funds to enter leveraged LP positions
+
+## 3. Interest Accrual on Borrowed Capital
+
+- **Borrow rate depends on**
+    - *Types of pools and leverage levels (maximum of the category)*
+        - **12 %** for 1 **– 1.5 ×** leverage
+        - **15 %** for **1.5– 2×** leverage
+        - **17 %** for **2 – 3×** leverage
+    - utilization rate
+    
+    the borrow rate is variable at every utilization point 
+    
+    ![Screenshot 2025-06-26 at 8.56.08 AM.png](./images/Screenshot_2025-06-26_at_8.56.08_AM.png)
+    
+    instead we can use step based formula that will reduce the computation stuff 
+
+## 4. Global Liquidity Index (GLI)
+
+- Maintained for both **lenders** and **borrowers**
+- Increases with each borrower-interest event
+- Used to calculate lender yield on exit
+
+> Note — Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
+> 
+
+---
+
+## 📊 Global Liquidity Index Explained
+
+The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the GLI updates to reflect that yield.
+
+Whenever a lender deposits or a borrower takes a loan, we record the current index value as a **snapshot**:
+
+- For **lenders**: store `GLI_entry` at the time of deposit
+- For **borrowers**: store `BLI_entry` based on their **leverage tier**
+
+When they later withdraw or repay, we compare the current index to the snapshot to determine how much interest they have earned or owe.
+
+```
+lenderBalance = deposit × (GLI_now / GLI_entry)
+```
+
+---
+
+## 📈 Total Borrow-Rate Formula
+
+```
+totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
+```
+
+**Where**
+
+- `B1`, `B2`, `B3` = Borrow rates for leverage levels different category
+- `U1`, `U2`, `U3` = Utilization (borrowed amount / total available) for each borrower type
+- `totalUtilization = U1 + U2 + U3`
+
+```
+liquidityRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
+```
+
+---
+
+## 🔄 Liquidity-Index Update Formulas
+
+### For Lenders
+
+```
+GLI(t) = GLI(t-1) × (1 + liquidityRate × Δt)
+```
+
+### For Borrowers
+
+```
+BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
+```
+
+> Note — 1 + rate × Δt is the compound-interest factor.
+> 
+> For **simple interest**, replace it with `borrowRate × Δt`.
+> 
+> Note - for each category a different index is calculated
+> 
+
+## Borrow Liquidity Indexes (BLI) — Three Risk Tiers
+
+Each leverage / risk bucket compounds independently.
+
+| Tier | Typical LTV / leverage | Symbol |
+| --- | --- | --- |
+| 1 | ≤ 1 × (safe) | `BLI₁` |
+| 2 | ≤ 2 × (medium) | `BLI₂` |
+| 3 | ≤ 3 × (high) | `BLI₃` |
+
+### Per‑Tier Update Rule
+
+$$
+\text{bli}_{k,t} = \text{bli}_{k,t-1} \times \left(1 + \text{borrowRate}_k \times \Delta t \right)
+$$
+
+**Repayment formula**
+
+```
+interest = principal * (BLI_now_k / BLI_entry_k - 1)
+```
+
+Note - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
+
+## Note - Both **GLI** (for lenders) and **BLI₁ / BLI₂ / BLI₃** (for borrowers) are **updated at regular intervals**, ideally **per block**. 
