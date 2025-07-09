@@ -36,7 +36,8 @@
               "llp",
               "lending-pool",
               "liquidation-llp",
-              "rebalancing-and-strategies"
+              "rebalancing-and-strategies",
+              "fees"
             ]
           },
           {

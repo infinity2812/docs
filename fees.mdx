@@ -1,0 +1,45 @@
+---
+title: "Fees"
+description: "Fee structure for PayStream's Leveraged Liquidity Provisioning (LLP) system."
+---
+
+# Fee Structure
+
+Paystream incorporates a transparent and modular fee system designed to fairly compensate the protocol, ensure long-term sustainability, and support risk management — all while maintaining competitive costs for users.
+
+## Fees on Lenders
+
+### Withdrawal Fee
+A small flat fee is charged when a lender withdraws their funds from the protocol. This fee is based on the total assets withdrawn and only applies at the time of exit.
+
+## Fees on Borrowers
+
+### Borrow Initiation Fee
+A one-time fee is charged when a borrower opens a position. This is calculated as a percentage of the borrowed amount.
+
+### Yield-Based Fee (on earned interest)
+In certain cases, a minimal fee may be applied on interest earned by the protocol from borrower activity. This supports long-term sustainability and covers protocol-level risks.
+
+### Liquidation Penalty
+In the event of a liquidation, a fixed penalty is applied. This acts as a deterrent to undercollateralized borrowing and helps cover protocol risk.
+
+## Solana Network Fees
+
+### Account Rent for On-Chain Accounts
+When a borrower or lender opens a position, Solana requires rent to maintain the on-chain account.
+A portion of this rent is refunded to the user upon position closure or repayment.
+
+## LP Position Fees (for Leveraged Borrowers)
+
+### LP Opening Fee (Tiered)
+A volume-based fee is applied when a user opens a leveraged LP position. The larger the position, the lower the fee tier. This incentivizes high-volume users while remaining accessible to smaller participants.
+
+### Performance Fee on Earned Yield
+When a borrower uses leverage to enter a yield-generating LP position, a small fee is applied to the yield earned, not the borrowed principal. This fee is tiered based on the leverage level used.
+No performance fee is charged for unleveraged positions.
+
+### Closing Fee
+There is no closing fee when a user exits their LP position. Users can close freely without additional cost.
+
+### Rebalancing Fee
+Rebalancing an active LP position incurs a small fee, depending on the speed of execution. Faster rebalances incur higher fees due to on-chain priority costs. 
