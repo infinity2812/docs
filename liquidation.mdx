@@ -3,31 +3,7 @@ title: "Liquidation"
 description: "How liquidations are handled in PayStream."
 ---
 
-```mermaid
-flowchart TD
-  A[Borrower opens position] --> B[Collateral deposited & loan issued]
-  B --> C[Monitor position health]
-
-  C --> D{LTV > LLTV?}
-  D -- No --> E[Position remains healthy]
-  D -- Yes --> F{Any external liquidator acts?}
-
-  F -- Yes --> G[External liquidator repays part or all of the debt]
-  G --> H[Receives collateral + liquidation incentive]
-  H --> Z[Position corrected]
-
-  F -- No --> I[Internal auto-liquidator bot triggers]
-  I --> J[Bot repays debt and receives collateral]
-  J --> Z
-
-  style A fill:#f0f8ff,stroke:#333
-  style B fill:#f0f8ff,stroke:#333
-  style C fill:#e6f7ff,stroke:#333
-  style D fill:#fff3cd,stroke:#333,stroke-width:2px
-  style F fill:#fff3cd,stroke:#333,stroke-width:2px
-  style E fill:#d4edda,stroke:#333
-  style G,H,I,J,Z fill:#e2e3e5,stroke:#333
-```
+LIQUIDATION WORKFLOW BLUE.
 
 # Liquidation Mechanism in Paystream
 
