@@ -63,11 +63,6 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Whitepaper",
-          "href": "https://www.paystream.finance/whitepaper.pdf",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Community",
           "href": "https://t.me/paystreamfi",
           "icon": "telegram"
