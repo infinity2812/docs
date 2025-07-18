@@ -15,7 +15,7 @@ PayStream's **peer-to-peer (P2P) matching engine** is the core mechanism that di
 ## How the Matching Engine Works
 
 
-PayStream’s matching engine can be viewed as a **priority queue** or a kind of **pseudo-order book** for matching loans. However, unlike a traditional order book, users do *not* place bids or asks with specific interest rates. Instead, the protocol automatically determines a fair P2P interest rate (one that lies between the pool’s supply APY and borrow APY) and matches lenders to borrowers at that rate.
+PayStream’s matching engine can be viewed as a **priority queue** or a **pseudo-order book** for matching loans. However, unlike a traditional order book, users do *not* place bids or asks with specific interest rates. Instead, the protocol automatically determines a fair P2P interest rate (one that lies between the pool’s supply APY and borrow APY) and matches lenders to borrowers at that rate.
 
 This means lenders and borrowers don’t negotiate rates; any available lending liquidity will be paired with borrowing demand instantly at the optimized P2P rate.
 
@@ -57,7 +57,7 @@ Whenever the P2P queue can’t immediately pair lenders with borrowers, PayStrea
 
 ---
 
-## Overcollateralization and Risk Management
+## Overcollateralization and LTV
 
 PayStream is an overcollateralized lending system, meaning borrowers must supply collateral to secure their loans. Every borrower first **deposits assets as collateral**, which makes them a lender on that side of the market before they borrow another asset. Collateral deposits are deposited in the underlying pool – thus **even collateral can earn interest** while posted.
 

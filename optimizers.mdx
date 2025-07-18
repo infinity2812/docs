@@ -8,12 +8,7 @@ description: "Learn about the optimizer mechanisms in PayStream."
 
 In Paystream, an **optimizer** is a strategy layer that determines where unmatched funds are deposited to earn passive yield when there’s no active P2P match. Optimizers are directly tied to the **underlying protocols** they integrate with  meaning each optimizer routes idle liquidity to a specific DeFi protocol where it can generate fallback interest until matched with a borrower.
 
-We're building a range of optimizers based on top Solana protocols. These include:
-
-- **Drift Optimizer** *(live now)*
-- **Kamino Optimizer** *(coming soon)*
-- **MarginFi Optimizer** *(coming soon)*
-- **Save Finance Optimizer** *(coming soon)*
+We’re building a suite of optimizers on top of leading Solana protocols including Drift, Kamino, MarginFi and Save Finance, with Drift currently live.
 
 When a user supplies funds into Paystream, they’ll be able to choose which optimizer to use. If their capital is not instantly matched via P2P, the funds are automatically deposited into the selected protocol, earning yield while waiting to be matched.
 

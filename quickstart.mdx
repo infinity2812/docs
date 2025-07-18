@@ -1,6 +1,8 @@
 ---
 title: "How does it work?"
-description: "Paystream mainly consists of P2P engine and Underlying markets"
+description: "Paystream is powered by two core components: a Peer-to-Peer (P2P) Matching Engine and a set of integrated Underlying Markets.
+
+"
 ---
 
 ![Workflow 1](./images/workflow-1.png)
@@ -12,8 +14,8 @@ description: "Paystream mainly consists of P2P engine and Underlying markets"
 
 - **Collateralized Borrowing**: Borrowers deposit collateral to borrow funds. This collateral is deployed into underlying protocol so that it earns while backing the loan, maximizing capital efficiency.
 
-- **Protocol-Level Risk Controls**: If a borrower fails to make repayments, a proportional portion of their collateral is automatically liquidated. This ensures the protocol stays solvent and protects lenders from bad debt.
+- **liquidation**: If a borrower fails to make repayments, a proportional portion of their collateral is automatically liquidated. This ensures the protocol stays solvent and protects lenders from bad debt.
 
-- **Instant Liquidity for Lenders**: Unmatched lender capital remains liquid and accessible. Lenders can withdraw or modify their offers at any time without being locked in.
+- **Instantaneous withdrawls **: Lenders can withdraw their capital instantly at any time. Paystream enables this by combining unmatched funds, borrower collateral, and other liquidity sources to fulfill withdrawals.
 
 - **Leveraged Liquidity Provisioning**: Users can invest in liquidity pools with leverage ranging from 1x to 4x by borrowing additional capital through PayStream and paying interest on the borrowed funds. This LLP layer will serves as both an incentive for borrowers and a fallback mechanism for unmatched P2P funds.
