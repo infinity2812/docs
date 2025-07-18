@@ -5,29 +5,17 @@ description: "Overview of PayStream's Leveraged Liquidity Provisioning (LLP) sys
 
 ![LLP Main](./images/llp-main.png)
 
-# Overview
-
 
 ### Lenders
 
-- Lenders deposit funds into the **lending pool**.
-- The lending pool maintains a **maximum utilization ratio (M%)** to ensure health and availability of funds.
-- **Interest** is earned by lenders based on the amount lent and utilization of the pool.
-- Interest paid by borrowers is **distributed proportionally** among all lenders based on their share in the pool.
-- Interest accrual occurs **per block**.
+
+Lenders deposit funds into the lending pool, which operates with a maximum utilization ratio (M%) to maintain the overall health of the system and ensure sufficient fund availability. Interest is earned by lenders based on the amount they lend and the utilization level of the pool. The interest paid by borrowers is distributed proportionally among all lenders according to their share in the pool. Interest accrual occurs on a per-block basis, enabling real-time earning and transparency.
 
 ---
 
 ### LP users / Borrowers
 
-- They can invest their own capital or **leverage** their position using funds from the lending pool.
-- They bear the risk of **liquidation** based on their **Loan-to-Value (LTV)** ratio.
-- Investment can be done in **DLMM** or **DAMM V2** pools.
-- They can either:
-    1. **Manually invest** in a chosen pool.
-    2. Opt for **auto trading** by selecting a wallet to copy. All positions made by the selected wallet will be copied.
-- Auto traders can set a **maximum leverage cap** for copied positions.
-- Before investing, the user's deposited **SOL will be swapped** into relevant tokens based on the pool.
+Investors on Paystream can choose to invest using their own capital or amplify their positions by leveraging funds from the lending pool. Each investor assumes the risk of liquidation based on their Loan-to-Value (LTV) ratio. Investments can be made in DLMM or DAMM V2 pools, either manually by selecting a specific pool or automatically by copying trades from a chosen wallet. In auto-trading mode, all positions made by the selected wallet are mirrored, with the option to set a maximum leverage cap for added control. Before any investment, the user’s deposited SOL is automatically swapped into the relevant tokens required by the chosen pool.
 
 ---
 
@@ -41,16 +29,8 @@ description: "Overview of PayStream's Leveraged Liquidity Provisioning (LLP) sys
 
 ### **Liquidation Mechanism**
 
-Applies only when leverage is taken.
-
-- The **liquidation system** is central to protocol risk management.
-- It activates when an investor’s **LTV exceeds the threshold**, indicating a risky position.
-- Supports:
-    - **Partial liquidation** to recover lender funds.
-    - **Full liquidation** if risks persist.
-    - **Deleveraging** based on overall pool utilization.
-    - User can deposit more funds to the position to increase their margin and save themselves from liquidation.
-
+ChatGPT said:
+The liquidation mechanism  applies only when leverage is taken and serves as a core component of the protocol’s risk management system. It is triggered when an investor’s Loan-to-Value (LTV) ratio exceeds a predefined threshold, signaling increased risk. To protect lender capital and maintain system stability, the protocol supports partial liquidation to recover funds and full liquidation if the risk persists. Additionally, deleveraging actions may be taken based on overall pool utilization. Investors have the option to deposit more funds into their position to boost their margin and avoid liquidation.
 ---
 
 ### **Fees**

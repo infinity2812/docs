@@ -3,8 +3,6 @@ title: "Leveraged Lending Pool"
 description: "Details about PayStream's Leveraged Lending Pool."
 ---
 
-# Leveraged Lending Pool
-
 A **shared liquidity system** with the following components:
 
 ![lending-pool](./images/lending-pool.png)
@@ -13,12 +11,11 @@ A **shared liquidity system** with the following components:
 
 ## 1. Lenders
 
-- Deposit a base asset (e.g., **SOL**, **USDC**)
-- Receive interest over time
+Lenders deposit a base asset (e.g., SOL, USDC) into the Paystream lending pool. In return, they earn interest over time based on the pool’s utilization and borrowing demand. Their funds help power leveraged trading opportunities for other users. The protocol ensures lender capital remains liquid, allowing for instant withdrawals at any time. Interest is distributed proportionally based on each lender’s share in the pool, and accrual occurs per block.
 
 ## 2. Borrowers
 
-- Access funds to enter leveraged LP positions
+Borrowers access capital from the lending pool to enter leveraged LP (Liquidity Provider) positions in supported pools like DLMM or DAMM V2. They can choose to invest manually or use auto-trading by copying another wallet's strategy. Borrowers are required to maintain a healthy Loan-to-Value (LTV) ratio to avoid liquidation. Before entering a position, their deposited SOL is automatically converted into the appropriate tokens for the chosen pool.
 
 ## 3. Interest Accrual on Borrowed Capital
 
