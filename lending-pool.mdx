@@ -39,7 +39,7 @@ A **shared liquidity system** with the following components:
 - Increases with each borrower-interest event
 - Used to calculate lender yield on exit
 
-> Note — Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
+> Note  Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
 > 
 
 ---
@@ -93,14 +93,14 @@ GLI(t) = GLI(t-1) × (1 + liquidityRate × Δt)
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 ```
 
-> Note — 1 + rate × Δt is the compound-interest factor.
+> Note  1 + rate × Δt is the compound-interest factor.
 > 
 > For **simple interest**, replace it with `borrowRate × Δt`.
 > 
 > Note - for each category a different index is calculated
 > 
 
-## Borrow Liquidity Indexes (BLI) — Three Risk Tiers
+## Borrow Liquidity Indexes (BLI)  Three Risk Tiers
 
 Each leverage / risk bucket compounds independently.
 

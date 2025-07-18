@@ -7,7 +7,7 @@ This mechanism safeguards both the **lenders’ funds** and the **integrity of t
 
 As a protocol, we are committed to returning the **exact amount of the principal token** that a lender has deposited. To ensure this, we must recover the **full value of the borrowed principal token** during liquidation.
 
-Therefore, the **Loan-to-Value (LTV)** calculation is done entirely in terms of the **principal token** (or usd ) — for both the **borrowed amount** and the **current value of the position**.
+Therefore, the **Loan-to-Value (LTV)** calculation is done entirely in terms of the **principal token** (or usd )  for both the **borrowed amount** and the **current value of the position**.
 
 Borrowers can avoid liquidation by **increasing their margin**, either:
 
@@ -48,7 +48,7 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 
 ### **Partial Liquidation (Individual Risk Control)**
 
-Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered — especially during volatile market conditions.
+Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
 
 - **Trigger**: When an individual borrower's **LTV** crosses the **partial threshold** (e.g., 85%).
 - **Action**: A calculated portion of their LP position is closed. The resulting assets are used to repay part of the debt.
