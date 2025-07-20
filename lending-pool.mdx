@@ -33,8 +33,7 @@ Paystream tracks and distributes interest using two index systems: GLI for lende
     
 ### 1. Global Liquidity Index (GLI)
 
-The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the LLI updates to reflect that yield.
-
+GLI refers to the cumulative index values used to track interest accrued by borrowers and earned by lenders over time. It represents how the lending pool grows and how borrower debt compounds, serving as the core mechanism for calculating interest and yield in the protocol.
 - Maintained for both **lenders** and **borrowers**
 - Increases with each borrower-interest event
 - Used to calculate lender yield on exit
@@ -112,7 +111,26 @@ $$
     
     the borrow rate is variable at every utilization point 
 
-#### a. Total Borrow-Rate Formula
+#### a. Borrow-Rate 
+
+***borrow rate wrt utilization**
+
+```
+B_t = B_F + \frac{B_C - B_F}{U_C - U_F} (U_t - U_F)
+```
+
+- `B_t` = Current borrow interest rate  
+- `B_F` = Borrow rate at the **floor-utilization** knot point  
+- `B_C` = Borrow rate at the **ceiling-utilization** knot point  
+- `U_t` = Current utilization rate  
+- `U_F` = Floor utilization knot  
+- `U_C` = Ceiling utilization knot
+
+> **Note:**  
+> These parameters are carefully chosen to dynamically adjust borrow rates based on utilization.  
+> This helps reduce systemic risks, prevent liquidity crunches, and ensure fair interest pricing.
+
+**total borrow rate**
 
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
@@ -125,7 +143,9 @@ totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 - `totalUtilization = U1 + U2 + U3`
 
 
-#### b. total lending rate formula 
+#### b. lending rate 
+
+**total lending rate**
 
 ```
 LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
