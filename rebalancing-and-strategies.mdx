@@ -3,37 +3,25 @@ title: "Rebalancing & Strategies"
 description: "Rebalancing policy and available strategies in PayStream's LLP."
 ---
 
-Rebalancing, if opted, will be triggered by an off-chain monitoring system (also responsible for triggering liquidation).
+Rebalancing is a risk mitigation mechanism that helps users maintain the optimal token ratio and price point within their leveraged positions. This not only reduces the chances of impermanent loss and minimizes the risk of liquidation during market volatility, but also enables users to maximize returns without the need for constant manual adjustments. If enabled, rebalancing is triggered automatically by an off-chain monitoring system—the same system responsible for initiating liquidations. A small fee is charged each time rebalancing is executed.
 
-## Rebalancing Policy
-
----
-
-### Default Behavior
+## Rebalancing Policy :  Default Behavior
 
 - **No rebalancing is applied by default**
+- Users can choose to enable rebalancing for their positions, allowing the system to automatically maintain optimal token ratios and price points. A small fee is applied based on the trigger option selected by the user.
 - Users retain full control over **non-leveraged positions**
     - They can **enter and exit** whenever they choose
     - No automated intervention unless opted-in
 - For **leveraged positions -**
-    1. **Add more margin** to maintain healthy LTV
-    2. Accept the risk of **partial or full liquidation** 
+    1. For leveraged position liquidation mechanism kicks in. 
+    2. **Add more margin** to maintain healthy LTV
+    3. Accept the risk of **partial or full liquidation** 
 
 ---
 
-If opt for rebalancing there are different options, with the choice of the time of rebalancing.
+## Strategies
 
-Only the following strategies are eligible for leverage:
-
-- **Spot LP**
-- **Single-Sided LP**
-- **Dual Bin Strategy**
-
-These strategies are safer and more predictable, making them suitable for initial leverage rollout.
-
----
-
-## Supported Strategies Overview
+The following strategy will be introduced in the initial version of llp.
 
 ### Spot LP Strategy
 A straightforward strategy where users provide equal value of two tokens into a liquidity pool.
@@ -91,3 +79,15 @@ A variation of Spot LP with uniform liquidity spread across the full price range
 - No need to set custom ranges or pick strategy shapes.
 - Earns fees wherever trading happens in the range.
 - Comes with a higher risk of impermanent loss due to broad distribution. 
+
+---
+
+NOTE - If opt for rebalancing there are different options, with the choice of the time of rebalancing.
+
+Only the following strategies are eligible for leverage:
+
+- **Spot LP**
+- **Single-Sided LP**
+- **Dual Bin Strategy**
+
+These strategies are safer and more predictable, making them suitable for initial leverage rollout.
