@@ -24,7 +24,7 @@ Lenders deposit a base asset (e.g., SOL, USDC) into the Paystream lending pool. 
 LP users access capital from the lending pool to enter leveraged LP (Liquidity Provider) positions in supported pools like DLMM or DAMM V2. They can choose to invest manually or use auto-trading by copying another wallet's strategy. Borrowers are required to maintain a healthy Loan-to-Value (LTV) ratio to avoid liquidation. Before entering a position, their deposited SOL is automatically converted into the appropriate tokens for the chosen pool.
 
 ---
-## Yield Mechanics
+## Pool Mechanics
 
 Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilization. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps yield distribution accurate and efficient without constant updates.
 
@@ -132,7 +132,7 @@ LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 ```
 ---
 
-### 3. repayment and yield 
+### 3. Interests and yield 
 
 **interest paid by the borrower**
 
@@ -140,12 +140,12 @@ LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 interest = principal * (BLI_now_k / BLI_entry_k - 1)
 ```
 
-**Yield earned by lender **
+**Yield earned by lender**
 
 ```
 Yield  = deposit × (LLI_now / LLI_entry)
 ```
 
 
-Note - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
+**Note** - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
 -Both *LLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 
