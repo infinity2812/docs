@@ -132,6 +132,8 @@ B_t = B_F + \frac{B_C - B_F}{U_C - U_F} (U_t - U_F)
 
 **total borrow rate**
 
+the **borrowing rate** reflects the cumulative interest paid by borrowers on their borrowed principal. It increases over time based on utilization and risk tier, and directly impacts how much debt a borrower owes at the time of repayment.
+
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 ```
@@ -144,6 +146,8 @@ totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 
 
 #### b. lending rate 
+
+The **lending rate** represents the rate at which lenders earn yield over time based on the interest paid by borrowers. It determines how much a lender’s deposit grows within the pool. 
 
 **total lending rate**
 
