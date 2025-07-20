@@ -77,18 +77,16 @@ LLI(t) = LLI(t-1) × (1 + LendingRate × Δt)
 The Borrower Liquidity Index (BLI) is a running “interest meter” that tells us how much a borrower’s debt has grown since they opened the position.
 
 - When a loan is taken, we snapshot the index as BLI_entry.
-
 - As blocks pass, the index rises with the applicable borrow rate.
-
 - At repayment, the ratio BLI_now / BLI_entry shows the exact interest multiplier to apply on the original principal.
-
+- There are three separate Borrower Liquidity Indexes because each leverage tier (1×, 2×, 3×) has a different interest rate. To track interest accurately for each borrower type, a dedicated index is maintained per tier, ensuring precise repayment calculations.
 
 ##### Borrowers Liquidity Index update formula
 ```
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 ```
 
-##### Borrow Liquidity Indexes (BLI)  : Three Risk Tiers 
+##### Three BLI's 
 
 Each leverage / risk bucket compounds independently.
 
