@@ -104,15 +104,16 @@ we deleverage that is reduce the levergae (lenders fund that the borrower have b
 - **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user 1 has $200 borrowed, user 2 $50 → both repay 10% of their debt.
 - **Why**: Ensures the protocol maintains enough liquidity to satisfy lender withdrawals.
 
----
 
-Calculate total debt to repay
+
+### Calculate total debt to repay
 
 **ΔB = totalBorrowed − (U_target × totalDeposits)**
 
 ΔB = B − U_target · D
 
-###
+**amount to liquidate** 
+
 For every borrower `i` with current debt `Debtᵢ`:
 
 ```
