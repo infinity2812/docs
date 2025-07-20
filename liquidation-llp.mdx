@@ -13,6 +13,9 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 - **Manually**, by adding more funds to the position, or
 - **Automatically**, by enabling **auto-mode**, provided their wallet maintains sufficient balance. (in future)
 
+To manage risk effectively, the protocol employs multiple layers of protection beyond full liquidation. Partial liquidation is triggered when an individual borrower’s LTV crosses a certain threshold, allowing only a portion of their position to be sold to bring their LTV back to a safer range. In extreme cases where overall pool utilization exceeds safe limits, the protocol initiates deleveraging, proportionally reducing all borrower debts to restore system-wide liquidity. Borrowers can also avoid liquidation altogether by increasing their margin, either manually by adding more collateral or (in the future) automatically through wallet-based top-ups.
+
+
 ![llp-liq](./images/llp-liq.png)
 
 ## **LTV (Loan-to-Value) & Liquidation Logic**
