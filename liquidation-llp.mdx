@@ -36,7 +36,11 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 
 ## Partial Liquidation Logic (Individual Risk Control)
 
-Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
+Partial liquidation is a protocol-level risk-mitigation step that sells a portion of an over-leveraged borrower’s position when their Loan-to-Value (LTV) climbs above a preset threshold, yet before a full liquidation is required.
+The sale proceeds are used to repay part of the borrower’s debt, pushing the LTV back into a safer range.
+
+
+- Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
 
 - **Trigger**: When an individual borrower's **LTV** crosses the **partial threshold** (e.g., 85%).
 - **Action**: A calculated portion of their LP position is closed. The resulting assets are used to repay part of the debt.
@@ -98,12 +102,18 @@ Let’s say:
 ##  **Deleveraging (System-Wide Risk Control)**
 
 ![develarage Workflow](./images/Deleverage-workflow.png)
-we deleverage that is reduce the levergae (lenders fund that the borrower have borrowed)
+
+Deleveraging is a protocol-level mechanism used to reduce the leverage across all borrowers in a pool when risk becomes too high.
+It forces partial repayments by all borrowers proportionally, helping the protocol bring utilization back to a safe level.
+
+we deleverage that is reduce the levergae (lenders fund that the borrower have borrowed) :
+
+- To ensure enough liquidity is available for lenders to withdraw their funds at any time.
+
+- To reduce systemic risk in the pool by lowering the average leverage across all borrowers.
 
 - **Trigger**: Utilization of the lending pool exceeds a critical limit (e.g., 95%) and lenders may not be able to withdraw.
 - **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user 1 has $200 borrowed, user 2 $50 → both repay 10% of their debt.
-- **Why**: Ensures the protocol maintains enough liquidity to satisfy lender withdrawals.
-
 
 
 ### Debt to liquidate
