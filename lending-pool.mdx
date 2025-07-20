@@ -3,21 +3,32 @@ title: "Leveraged Lending Pool"
 description: "Details about PayStream's Leveraged Lending Pool."
 ---
 
-A **shared liquidity system** with the following components:
+Paystream’s Leveraged Lending Pool is a shared liquidity system designed to support leveraged LP positions. It connects lenders and borrowers through an efficient interest accrual system, dynamic utilization, and risk-managed yield distribution. Below is a breakdown of the core components:
 
 ![lending-pool](./images/lending-pool.png)
 
 ---
 
-## 1. Lenders
+## User roles
+
+Paystream’s leveraged lending system is powered by two core user roles: Lenders and LP-users/Borrowers. Lenders supply capital to the protocol in exchange for yield, while LP-users/borrowers utilize that capital to enter leveraged liquidity positions across supported DeFi pools.
+---
+
+### 1. Lenders
 
 Lenders deposit a base asset (e.g., SOL, USDC) into the Paystream lending pool. In return, they earn interest over time based on the pool’s utilization and borrowing demand. Their funds help power leveraged trading opportunities for other users. The protocol ensures lender capital remains liquid, allowing for instant withdrawals at any time. Interest is distributed proportionally based on each lender’s share in the pool, and accrual occurs per block.
 
-## 2. Leveraged lp users / Borrowers
+### 2. Leveraged lp users / Borrowers
 
 LP users access capital from the lending pool to enter leveraged LP (Liquidity Provider) positions in supported pools like DLMM or DAMM V2. They can choose to invest manually or use auto-trading by copying another wallet's strategy. Borrowers are required to maintain a healthy Loan-to-Value (LTV) ratio to avoid liquidation. Before entering a position, their deposited SOL is automatically converted into the appropriate tokens for the chosen pool.
 
-## 3. Interest Accrual on Borrowed Capital
+---
+## Yield Mechanics
+
+Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilization. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps yield distribution accurate and efficient without constant updates.
+
+---
+### 3. Interest Accrual on Borrowed Capital
 
 - **Borrow rate depends on**
     - *Types of pools and leverage levels (maximum of the category)*
@@ -28,7 +39,7 @@ LP users access capital from the lending pool to enter leveraged LP (Liquidity P
     
     the borrow rate is variable at every utilization point 
     
-## 4. Global Liquidity Index (GLI)
+### 4. Global Liquidity Index (GLI)
 
 - Maintained for both **lenders** and **borrowers**
 - Increases with each borrower-interest event
@@ -39,7 +50,7 @@ LP users access capital from the lending pool to enter leveraged LP (Liquidity P
 
 ---
 
-## Global Liquidity Index Explained
+### Global Liquidity Index Explained
 
 The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the GLI updates to reflect that yield.
 
@@ -56,7 +67,7 @@ lenderBalance = deposit × (GLI_now / GLI_entry)
 
 ---
 
-## Total Borrow-Rate Formula
+### Total Borrow-Rate Formula
 
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
@@ -74,15 +85,15 @@ liquidityRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 
 ---
 
-### Liquidity-Index Update Formulas
+#### Liquidity-Index Update Formulas
 
-### For Lenders
+#### For Lenders
 
 ```
 GLI(t) = GLI(t-1) × (1 + liquidityRate × Δt)
 ```
 
-### For Borrowers
+#### For Borrowers
 
 ```
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
@@ -95,7 +106,7 @@ BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 > Note - for each category a different index is calculated
 > 
 
-## Borrow Liquidity Indexes (BLI)  Three Risk Tiers
+### Borrow Liquidity Indexes (BLI)  Three Risk Tiers
 
 Each leverage / risk bucket compounds independently.
 
@@ -105,7 +116,7 @@ Each leverage / risk bucket compounds independently.
 | 2 | ≤ 2 × (medium) | `BLI₂` |
 | 3 | ≤ 3 × (high) | `BLI₃` |
 
-### Per‑Tier Update Rule
+#### Per‑Tier Update Rule
 
 $$
 \text{bli}_{k,t} = \text{bli}_{k,t-1} \times \left(1 + \text{borrowRate}_k \times \Delta t \right)
