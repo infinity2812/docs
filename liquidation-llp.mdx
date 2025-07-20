@@ -1,8 +1,7 @@
 ---
 title: "Liquidation (LLP)"
-description: "How liquidation works in PayStream's LLP."
+description: ""
 ---
-
 This mechanism safeguards both the **lenders’ funds** and the **integrity of the protocol**.
 
 The purpose of liquidation is to ensure that the protocol can recover the full value of the borrowed principal token, so that lenders are returned the exact amount of the principal they deposited.
@@ -57,7 +56,7 @@ Partial liquidation is designed as a **borrower-friendly safeguard and a way to 
 
 ---
 
-###  One-Time Liquidation Logic
+####  One-Time Liquidation Logic
 
 - **Partial liquidation** is triggered **once** per liquidation cycle.
 - If the borrower **adds more funds** and LTV drops below the **safe threshold**, they become eligible for **partial liquidation again** in the future.
@@ -65,7 +64,7 @@ Partial liquidation is designed as a **borrower-friendly safeguard and a way to 
 
 ---
 
-###  Precision-Based Recovery (Not Fixed Slice)
+####  Precision-Based Recovery (Not Fixed Slice)
 
 Unlike protocols that liquidate a **fixed slice** (e.g., 50%), our system calculates the exact value needed to **recover 80% of the lender’s principal**, based on:
 
@@ -77,15 +76,15 @@ Position to liquidate = 0.8 x borrowed amount
 
  *Note: `borrowed amount = debt` in calculations.*
 
-### State-Based Model (Simple Logic)
+#### State-Based Model (Simple Logic)
 
 For each position, track a flag: `has_been_partially_liquidated`.
 
-###  Initial State:
+**Initial State:**
 
 - `has_been_partially_liquidated = false`
 
-### Example Scenario
+#### Example Scenario
 
 Let’s say:
 
@@ -124,8 +123,7 @@ Calculate total debt to repay
 
 ΔB = B − U_target · D
 
-### How much each borrower must repay (pro-rata method)
-
+####
 For every borrower `i` with current debt `Debtᵢ`:
 
 ```
