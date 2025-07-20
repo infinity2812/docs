@@ -5,14 +5,26 @@ description: "Overview of PayStream's Leveraged Liquidity Provisioning (LLP) sys
 
 ![LLP Main](./images/llp-main.png)
 
+---
+###Leveraged Liquidity Provisioning (LLP)
 
-### Lenders
+LLP enables users to leverage their liquidity positions in DeFi pools by borrowing capital from Paystream’s leveraged lending pool.This allows users to maximize yield by scaling their positions beyond their initial capital.Lenders also earn yield by supplying capital to fuel leveraged positions.
+
+---
+
+### Participants: Lenders and LP-Users 
+
+Leveraged Liquidity Provisioning (LLP) revolves around two key participants—Lenders, who provide the capital that powers the leveraged liquidity , and LP-users , who utilize that capital to enter leveraged liquidity positions. This section outlines their roles, mechanics, and interactions within the protocol.
+
+---
+
+## Lenders
 
 Lenders deposit funds into the lending pool, which operates with a maximum utilization ratio (M%) to maintain the overall health of the system and ensure sufficient fund availability. Interest is earned by lenders based on the amount they lend and the utilization level of the pool. The interest paid by borrowers is distributed proportionally among all lenders according to their share in the pool. Interest accrual occurs on a per-block basis, enabling real-time earning and transparency.
 
 ---
 
-### LP users / Borrowers
+## LP users / Borrowers
 
 Investors on Paystream can choose to invest using their own capital or amplify their positions by leveraging funds from the lending pool. Each investor assumes the risk of liquidation based on their Loan-to-Value (LTV) ratio. Investments can be made in DLMM or DAMM V2 pools, either manually by selecting a specific pool or automatically by copying trades from a chosen wallet. In auto-trading mode, all positions made by the selected wallet are mirrored, with the option to set a maximum leverage cap for added control. Before any investment, the user’s deposited SOL is automatically swapped into the relevant tokens required by the chosen pool.
 
