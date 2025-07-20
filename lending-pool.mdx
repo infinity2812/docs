@@ -29,18 +29,9 @@ LP users access capital from the lending pool to enter leveraged LP (Liquidity P
 Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilization. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps yield distribution accurate and efficient without constant updates.
 
 ---
-### 1. Interest rate 
 
-- **Borrow rate depends on**
-    - *Types of pools and leverage levels (maximum of the category)*
-        - **12 %** for 1 **– 1.5 ×** leverage
-        - **15 %** for **1.5– 2×** leverage
-        - **17 %** for **2 – 3×** leverage
-    - utilization rate
     
-    the borrow rate is variable at every utilization point 
-    
-### 2. Global Liquidity Index (GLI)
+### 1. Global Liquidity Index (GLI)
 
 The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the LLI updates to reflect that yield.
 
@@ -109,10 +100,19 @@ $$
 > 
 > Note - for each category a different index is calculated
 
-
 ---
+### 2. Interest rates 
 
-### 3. Total Borrow-Rate Formula
+- **Borrow rate depends on**
+    - *Types of pools and leverage levels (maximum of the category)*
+        - **12 %** for 1 **– 1.5 ×** leverage
+        - **15 %** for **1.5– 2×** leverage
+        - **17 %** for **2 – 3×** leverage
+    - utilization rate
+    
+    the borrow rate is variable at every utilization point 
+
+#### a. Total Borrow-Rate Formula
 
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
@@ -125,15 +125,14 @@ totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 - `totalUtilization = U1 + U2 + U3`
 
 
-### 4. total lending rate formula 
+#### b. total lending rate formula 
 
 ```
 LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 ```
-
 ---
 
-### 5. repayment and yield 
+### 3. repayment and yield 
 
 **interest paid by the borrower**
 
