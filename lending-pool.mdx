@@ -42,18 +42,12 @@ Paystream tracks and distributes interest using two index systems: GLI for lende
     
 ### 2. Global Liquidity Index (GLI)
 
+The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the LLI updates to reflect that yield.
+
 - Maintained for both **lenders** and **borrowers**
 - Increases with each borrower-interest event
 - Used to calculate lender yield on exit
 
-> Note  Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
->
-
----
-
-### Lender Liquidity Index 
-
-The **LLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the LLI updates to reflect that yield.
 
 Whenever a lender deposits or a borrower takes a loan, we record the current index value as a **snapshot**:
 
@@ -62,52 +56,39 @@ Whenever a lender deposits or a borrower takes a loan, we record the current ind
 
 When they later withdraw or repay, we compare the current index to the snapshot to determine how much interest they have earned or owe.
 
+> Note  Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
+
+#### a. Lending liquidity Index 
+
+LLI represents how much the lending pool has grown over time due to interest paid by borrowers.
+When a lender deposits funds, a snapshot (LLI_entry) is taken. When the lender exits, the current index (LLI_now) determines how much yield they've earned.
+
+#### LLI update formula
+
 ```
-lenderBalance = deposit × (LLI_now / LLI_entry)
+LLI(t) = LLI(t-1) × (1 + LendingRate × Δt)
 ```
+
 
 ---
 
-### 3. Total Borrow-Rate Formula
+#### b. Borrower liquidity index 
 
-```
-totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
-```
+The Borrower Liquidity Index (BLI) is a running “interest meter” that tells us how much a borrower’s debt has grown since they opened the position.
 
-**Where**
+- When a loan is taken, we snapshot the index as BLI_entry.
 
-- `B1`, `B2`, `B3` = Borrow rates for leverage levels different category
-- `U1`, `U2`, `U3` = Utilization (borrowed amount / total available) for each borrower type
-- `totalUtilization = U1 + U2 + U3`
+- As blocks pass, the index rises with the applicable borrow rate.
 
-```
-liquidityRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
-```
+- At repayment, the ratio BLI_now / BLI_entry shows the exact interest multiplier to apply on the original principal.
 
----
 
-##### Liquidity-Index Update Formulas
-
-###### For Lenders
-
-```
-LLI(t) = LLI(t-1) × (1 + liquidityRate × Δt)
-```
-
-###### For Borrowers
-
+#### Borrowers Liquidity Index update formula
 ```
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 ```
 
-> Note  1 + rate × Δt is the compound-interest factor.
-> 
-> For **simple interest**, replace it with `borrowRate × Δt`.
-> 
-> Note - for each category a different index is calculated
-> 
-
-### Borrow Liquidity Indexes (BLI)  : Three Risk Tiers
+#### Borrow Liquidity Indexes (BLI)  : Three Risk Tiers 
 
 Each leverage / risk bucket compounds independently.
 
@@ -123,11 +104,51 @@ $$
 \text{bli}_{k,t} = \text{bli}_{k,t-1} \times \left(1 + \text{borrowRate}_k \times \Delta t \right)
 $$
 
-**Repayment formula**
+
+> Note  1 + rate × Δt is the compound-interest factor.
+> 
+> For **simple interest**, replace it with `borrowRate × Δt`.
+> 
+> Note - for each category a different index is calculated
+
+
+---
+
+### 3. Total Borrow-Rate Formula
+
+```
+totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
+```
+
+**Where**
+
+- `B1`, `B2`, `B3` = Borrow rates for leverage levels different category
+- `U1`, `U2`, `U3` = Utilization (borrowed amount / total available) for each borrower type
+- `totalUtilization = U1 + U2 + U3`
+
+
+### 4. total lending rate formula 
+
+```
+LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
+```
+
+---
+
+### 5. repayment and yield 
+
+**interest paid by the borrower**
 
 ```
 interest = principal * (BLI_now_k / BLI_entry_k - 1)
 ```
 
+**Yield earned by lender **
+
+```
+Yield  = deposit × (LLI_now / LLI_entry)
+```
+
+
 Note - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
--Both *GLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 
+-Both *LLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 
