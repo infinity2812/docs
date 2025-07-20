@@ -63,7 +63,7 @@ When they later withdraw or repay, we compare the current index to the snapshot 
 LLI represents how much the lending pool has grown over time due to interest paid by borrowers.
 When a lender deposits funds, a snapshot (LLI_entry) is taken. When the lender exits, the current index (LLI_now) determines how much yield they've earned.
 
-#### LLI update formula
+##### LLI update formula
 
 ```
 LLI(t) = LLI(t-1) × (1 + LendingRate × Δt)
@@ -83,12 +83,12 @@ The Borrower Liquidity Index (BLI) is a running “interest meter” that tells 
 - At repayment, the ratio BLI_now / BLI_entry shows the exact interest multiplier to apply on the original principal.
 
 
-#### Borrowers Liquidity Index update formula
+##### Borrowers Liquidity Index update formula
 ```
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 ```
 
-#### Borrow Liquidity Indexes (BLI)  : Three Risk Tiers 
+##### Borrow Liquidity Indexes (BLI)  : Three Risk Tiers 
 
 Each leverage / risk bucket compounds independently.
 
@@ -98,7 +98,7 @@ Each leverage / risk bucket compounds independently.
 | 2 | ≤ 2 × (medium) | `BLI₂` |
 | 3 | ≤ 3 × (high) | `BLI₃` |
 
-#### Per‑Tier Update Rule
+##### Per‑Tier Update Rule
 
 $$
 \text{bli}_{k,t} = \text{bli}_{k,t-1} \times \left(1 + \text{borrowRate}_k \times \Delta t \right)
