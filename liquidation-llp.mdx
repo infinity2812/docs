@@ -59,14 +59,11 @@ Partial liquidation is designed as a **borrower-friendly safeguard and a way to 
 - **Goal**: Bring the LTV back to a safer range (e.g., down to 75%) **without liquidating the entire position**.
 - **Why**: This protects **lender funds** while giving borrowers a **fairer chance** to recover compared to immediate full liquidation.
 
-
 #### One-Time Liquidation Logic
 
 - **Partial liquidation** is triggered **once** per liquidation cycle.
 - If the borrower **adds more funds** and LTV drops below the **safe threshold**, they become eligible for **partial liquidation again** in the future.
 - For now, **partial liquidation is only applied to blue-chip and mid-cap assets**
-
----
 
 #### Precision-Based Recovery (Not Fixed Slice)
 
