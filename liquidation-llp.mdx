@@ -36,17 +36,6 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 
 
 
-### Trigger Rules
-
-| Condition | Action |
-| --- | --- |
-| `LTV ≥ partial_threshold` **and** `has_been_partially_liquidated = false` | → Do **partial liquidation** (e.g. 50 %), then set `has_been_partially_liquidated = true` |
-| `LTV ≥ full_threshold` **and** `has_been_partially_liquidated = true` | → **Fully liquidate** the remaining position |
-| `LTV < safe_threshold` (e.g. user tops up collateral) | → Reset `has_been_partially_liquidated = false` |
-|  |  |
-
-
-
 
 ---
 
@@ -99,6 +88,20 @@ Let’s say:
     - Full liquidation triggers.
 3. If after partial liquidation borrower adds more collateral, LTV drops to 65 %
     - System resets the flag; they get another shot.
+
+
+
+#### Trigger Rules
+
+| Condition | Action |
+| --- | --- |
+| `LTV ≥ partial_threshold` **and** `has_been_partially_liquidated = false` | → Do **partial liquidation** (e.g. 50 %), then set `has_been_partially_liquidated = true` |
+| `LTV ≥ full_threshold` **and** `has_been_partially_liquidated = true` | → **Fully liquidate** the remaining position |
+| `LTV < safe_threshold` (e.g. user tops up collateral) | → Reset `has_been_partially_liquidated = false` |
+|  |  |
+
+
+
 
 ---
 
