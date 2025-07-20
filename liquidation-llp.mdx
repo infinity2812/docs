@@ -34,11 +34,6 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 
 ---
 
-
-
-
----
-
 ### Partial Liquidation Logic (Individual Risk Control)
 
 Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
@@ -89,8 +84,6 @@ Let’s say:
 3. If after partial liquidation borrower adds more collateral, LTV drops to 65 %
     - System resets the flag; they get another shot.
 
-
-
 #### Trigger Rules
 
 | Condition | Action |
@@ -99,9 +92,6 @@ Let’s say:
 | `LTV ≥ full_threshold` **and** `has_been_partially_liquidated = true` | → **Fully liquidate** the remaining position |
 | `LTV < safe_threshold` (e.g. user tops up collateral) | → Reset `has_been_partially_liquidated = false` |
 |  |  |
-
-
-
 
 ---
 
