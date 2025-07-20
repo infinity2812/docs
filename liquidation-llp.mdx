@@ -5,7 +5,7 @@ description: "How liquidation works in PayStream's LLP."
 
 This mechanism safeguards both the **lenders’ funds** and the **integrity of the protocol**.
 
-As a protocol, we are committed to returning the **exact amount of the principal token** that a lender has deposited. To ensure this, we must recover the **full value of the borrowed principal token** during liquidation.
+The purpose of liquidation is to ensure that the protocol can recover the full value of the borrowed principal token, so that lenders are returned the exact amount of the principal they deposited.
 
 Therefore, the **Loan-to-Value (LTV)** calculation is done entirely in terms of the **principal token** (or usd )  for both the **borrowed amount** and the **current value of the position**.
 
@@ -113,7 +113,7 @@ Let’s say:
 we deleverage that is reduce the levergae (lenders fund that the borrower have borrowed)
 
 - **Trigger**: Utilization of the lending pool exceeds a critical limit (e.g., 95%) and lenders may not be able to withdraw.
-- **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user1 has $200 borrowed, user2 $50 → both repay 10% of their debt.
+- **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user 1 has $200 borrowed, user 2 $50 → both repay 10% of their debt.
 - **Why**: Ensures the protocol maintains enough liquidity to satisfy lender withdrawals.
 
 ---
