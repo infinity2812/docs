@@ -29,7 +29,7 @@ LP users access capital from the lending pool to enter leveraged LP (Liquidity P
 Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilization. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps yield distribution accurate and efficient without constant updates.
 
 ---
-### 1. Interest Accrual on Borrowed Capital
+### 1. Interest rate 
 
 - **Borrow rate depends on**
     - *Types of pools and leverage levels (maximum of the category)*
@@ -47,23 +47,23 @@ Paystream tracks and distributes interest using two index systems: GLI for lende
 - Used to calculate lender yield on exit
 
 > Note  Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
-> 
+>
 
 ---
 
-#### Global Liquidity Index Explained
+### Lender Liquidity Index 
 
-The **GLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the GLI updates to reflect that yield.
+The **LLI** tracks cumulative yield earned by the lending pool over time. Each time a borrower accrues interest, the LLI updates to reflect that yield.
 
 Whenever a lender deposits or a borrower takes a loan, we record the current index value as a **snapshot**:
 
-- For **lenders**: store `GLI_entry` at the time of deposit
+- For **lenders**: store `LLI_entry` at the time of deposit
 - For **borrowers**: store `BLI_entry` based on their **leverage tier**
 
 When they later withdraw or repay, we compare the current index to the snapshot to determine how much interest they have earned or owe.
 
 ```
-lenderBalance = deposit × (GLI_now / GLI_entry)
+lenderBalance = deposit × (LLI_now / LLI_entry)
 ```
 
 ---
@@ -91,7 +91,7 @@ liquidityRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 ###### For Lenders
 
 ```
-GLI(t) = GLI(t-1) × (1 + liquidityRate × Δt)
+LLI(t) = LLI(t-1) × (1 + liquidityRate × Δt)
 ```
 
 ###### For Borrowers
