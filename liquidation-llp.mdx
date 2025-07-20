@@ -45,7 +45,12 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 | `LTV < safe_threshold` (e.g. user tops up collateral) | → Reset `has_been_partially_liquidated = false` |
 |  |  |
 
-### **Partial Liquidation (Individual Risk Control)**
+
+
+
+---
+
+### Partial Liquidation Logic (Individual Risk Control)
 
 Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
 
@@ -54,9 +59,8 @@ Partial liquidation is designed as a **borrower-friendly safeguard and a way to 
 - **Goal**: Bring the LTV back to a safer range (e.g., down to 75%) **without liquidating the entire position**.
 - **Why**: This protects **lender funds** while giving borrowers a **fairer chance** to recover compared to immediate full liquidation.
 
----
 
-####  One-Time Liquidation Logic
+#### One-Time Liquidation Logic
 
 - **Partial liquidation** is triggered **once** per liquidation cycle.
 - If the borrower **adds more funds** and LTV drops below the **safe threshold**, they become eligible for **partial liquidation again** in the future.
@@ -64,7 +68,7 @@ Partial liquidation is designed as a **borrower-friendly safeguard and a way to 
 
 ---
 
-####  Precision-Based Recovery (Not Fixed Slice)
+#### Precision-Based Recovery (Not Fixed Slice)
 
 Unlike protocols that liquidate a **fixed slice** (e.g., 50%), our system calculates the exact value needed to **recover 80% of the lender’s principal**, based on:
 
@@ -72,9 +76,9 @@ Unlike protocols that liquidate a **fixed slice** (e.g., 50%), our system calcul
 - Current **LTV**
 - Position size and debt
 
-Position to liquidate = 0.8 x borrowed amount 
+Position to liquidate = 0.8 x borrowed amount
 
- *Note: `borrowed amount = debt` in calculations.*
+*Note: `borrowed amount = debt` in calculations.*
 
 #### State-Based Model (Simple Logic)
 
@@ -91,18 +95,13 @@ Let’s say:
 - `partial_threshold = 80 %`
 - `full_threshold = 90 %`
 - `safe_threshold = 70 %`
+
 1. Borrower LTV hits 80 %
-    
-    → Partial liquidation triggers, flag is set.
-    
+    - Partial liquidation triggers, flag is set.
 2. Borrower does **nothing**, LTV reaches 91 %
-    
-    → Full liquidation triggers.
-    
+    - Full liquidation triggers.
 3. If after partial liquidation borrower adds more collateral, LTV drops to 65 %
-    
-    → System resets the flag; they get another shot.
-    
+    - System resets the flag; they get another shot.
 
 ---
 
