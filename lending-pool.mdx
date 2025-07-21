@@ -102,6 +102,12 @@ $$
 ---
 ### 2. Interest rates 
 
+
+#### a. Borrow-Rate 
+
+the **borrowing rate** reflects the cumulative interest paid by borrowers on their borrowed principal. It increases over time based on utilization and risk tier, and directly impacts how much debt a borrower owes at the time of repayment.
+
+
 - **Borrow rate depends on**
     - *Types of pools and leverage levels (maximum of the category)*
         - **12 %** for 1 **– 1.5 ×** leverage
@@ -110,8 +116,6 @@ $$
     - utilization rate
     
     the borrow rate is variable at every utilization point 
-
-#### a. Borrow-Rate 
 
 ***borrow rate wrt utilization**
 
@@ -132,7 +136,6 @@ B_t = B_F + \frac{B_C - B_F}{U_C - U_F} (U_t - U_F)
 
 **total borrow rate**
 
-the **borrowing rate** reflects the cumulative interest paid by borrowers on their borrowed principal. It increases over time based on utilization and risk tier, and directly impacts how much debt a borrower owes at the time of repayment.
 
 ```
 totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
