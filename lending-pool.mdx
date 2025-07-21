@@ -148,11 +148,11 @@ totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 - `totalUtilization = U1 + U2 + U3`
 
 
-#### b. lending rate 
+#### b. Lending rate 
 
 The **lending rate** represents the rate at which lenders earn yield over time based on the interest paid by borrowers. It determines how much a lender’s deposit grows within the pool. 
 
-**total lending rate**
+**Lending rate**
 
 ```
 LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
@@ -160,6 +160,9 @@ LendingRate = totalborrowRate x totalUtilization x  (1 - riskFactor)
 ---
 
 ### 3. Interests and yield 
+
+Paystream uses index ratios to calculate interest and yield. Borrowers pay interest based on how much the BLI has grown since borrowing, while lenders earn yield from the increase in LLI since their deposit. This ensures accurate, time-based calculations without constant position updates.
+
 
 #### a. interest paid by the borrower
 
