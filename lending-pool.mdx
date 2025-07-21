@@ -3,7 +3,7 @@ title: "Leveraged Lending Pool"
 description: "Details about PayStream's Leveraged Lending Pool."
 ---
 
-Paystream’s Leveraged Lending Pool is a shared liquidity system designed to support leveraged LP positions. It connects lenders and borrowers through an efficient interest accrual system, dynamic utilization, and risk-managed yield distribution. Below is a breakdown of the core components:
+Paystream’s Leveraged Lending Pool is a shared liquidity system designed to support leveraged LP positions. It connects lenders and borrowers through an efficient interest accrual system, dynamic utilisation, and risk-managed yield distribution. Below is a breakdown of the core components:
 
 ![lending-pool](./images/lending-pool.png)
 
@@ -11,22 +11,22 @@ Paystream’s Leveraged Lending Pool is a shared liquidity system designed to su
 
 ## User roles
 
-Paystream’s leveraged lending system is powered by two core user roles: Lenders and LP-users/Borrowers. Lenders supply capital to the protocol in exchange for yield, while LP-users/borrowers utilize that capital to enter leveraged liquidity positions across supported DeFi pools.
+Paystream’s leveraged lending system is powered by two core user roles: Lenders and LP-users/Borrowers. Lenders supply capital to the protocol in exchange for yield, while LP-users/borrowers utilise that capital to enter leveraged liquidity positions across supported DeFi pools.
 
 ---
 
 ### 1. Lenders
 
-Lenders deposit a base asset (e.g., SOL, USDC) into the Paystream lending pool. In return, they earn interest over time based on the pool’s utilization and borrowing demand. Their funds help power leveraged trading opportunities for other users. The protocol ensures lender capital remains liquid, allowing for instant withdrawals at any time. Interest is distributed proportionally based on each lender’s share in the pool, and accrual occurs per block.
+Lenders deposit a base asset (e.g., SOL, USDC) into the Paystream lending pool. In return, they earn interest over time based on the pool’s utilisation and borrowing demand. Their funds help power leveraged trading opportunities for other users. The protocol ensures lender capital remains liquid, allowing for instant withdrawals at any time. Interest is distributed proportionally based on each lender’s share in the pool, and accrual occurs per block.
 
-### 2. Leveraged lp users / Borrowers
+### 2. Leveraged LP users / Borrowers
 
-LP users access capital from the lending pool to enter leveraged LP (Liquidity Provider) positions in supported pools like CLM (concentrated liquidity markets ), DLMM or DAMM V2 . They can choose to invest manually or use auto-trading by copying another wallet's strategy. Borrowers are required to maintain a healthy Loan-to-Value (LTV) ratio to avoid liquidation. Before entering a position, their deposited SOL is automatically converted into the appropriate tokens for the chosen pool.
+LP users access capital from the lending pool to enter leveraged LP (Liquidity Provider) positions in supported pools like CLM (concentrated liquidity markets ), DLMM or DAMM V2. They can choose to invest manually or use auto-trading by copying another wallet's strategy. Borrowers are required to maintain a healthy Loan-to-Value (LTV) ratio to avoid liquidation. Before entering a position, their deposited SOL is automatically converted into the appropriate tokens for the chosen pool.
 
 ---
 ## Pool Mechanics
 
-Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilization. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps yield distribution accurate and efficient without constant updates.
+Paystream tracks and distributes interest using two index systems: GLI for lenders and BLI for borrowers. Lenders earn yield based on pool utilisation. Borrowers pay interest based on their leverage tier and usage time. When repaying, the system calculates interest using the difference between the current and initial index values. This setup keeps the yield distribution accurate and efficient without constant updates.
 
 ---
 
@@ -46,7 +46,7 @@ Whenever a lender deposits or a borrower takes a loan, we record the current ind
 
 When they later withdraw or repay, we compare the current index to the snapshot to determine how much interest they have earned or owe.
 
-> Note  Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
+> Note: Because there are three borrowing-rate tiers (by leverage), we maintain three global indices on the borrowing side.
 
 #### a. Lending liquidity Index 
 
@@ -68,17 +68,17 @@ The Borrower Liquidity Index (BLI) is a running “interest meter” that tells 
 
 - When a loan is taken, we snapshot the index as BLI_entry.
 - As blocks pass, the index rises with the applicable borrow rate.
-- At repayment, the ratio BLI_now / BLI_entry shows the exact interest multiplier to apply on the original principal.
+- At repayment, the ratio BLI_now / BLI_entry shows the exact interest multiplier to apply to the original principal.
 - There are three separate Borrower Liquidity Indexes because each leverage tier (1×, 2×, 3×) has a different interest rate. To track interest accurately for each borrower type, a dedicated index is maintained per tier, ensuring precise repayment calculations.
 
-**Borrowers Liquidity Index update formula**
+**Borrowers' Liquidity Index update formula**
 ```
 BLI(t) = BLI(t-1) × (1 + borrowRate × Δt)
 ```
 
-**Tiered BLI's** 
+**Tiered BLIs** 
 
-Each leverage / risk bucket compounds independently.
+Each leverage/risk bucket compounds independently.
 
 | Tier | Typical LTV / leverage | Symbol |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ $$
 > 
 > For **simple interest**, replace it with `borrowRate × Δt`.
 > 
-> Note - for each category a different index is calculated
+> Note - for each category, a different index is calculated
 
 ---
 ### 2. Interest rates 
@@ -105,7 +105,7 @@ $$
 
 #### a. Borrow-Rate 
 
-the **borrowing rate** reflects the cumulative interest paid by borrowers on their borrowed principal. It increases over time based on utilization and risk tier, and directly impacts how much debt a borrower owes at the time of repayment.
+The **borrowing rate** reflects the cumulative interest paid by borrowers on their borrowed principal. It increases over time based on utilisation and risk tier, and directly impacts how much debt a borrower owes at the time of repayment.
 
 
 - **Borrow rate depends on**
@@ -113,11 +113,11 @@ the **borrowing rate** reflects the cumulative interest paid by borrowers on the
         - **12 %** for 1 **– 1.5 ×** leverage
         - **15 %** for **1.5– 2×** leverage
         - **17 %** for **2 – 3×** leverage
-    - utilization rate
+    - utilisation rate
     
-    the borrow rate is variable at every utilization point 
+    The borrowing rate is variable at every utilisation point. 
 
-**Borrow rate wrt utilization**
+**Borrow rate wrt utilisation**
 
 ```
 B_t = B_F + \frac{B_C - B_F}{U_C - U_F} (U_t - U_F)
@@ -131,7 +131,7 @@ B_t = B_F + \frac{B_C - B_F}{U_C - U_F} (U_t - U_F)
 - `U_C` = Ceiling utilization knot
 
 > **Note:**  
-> These parameters are carefully chosen to dynamically adjust borrow rates based on utilization.  
+> These parameters are carefully chosen to dynamically adjust borrow rates based on utilisation.  
 > This helps reduce systemic risks, prevent liquidity crunches, and ensure fair interest pricing.
 
 **total borrow rate**
@@ -144,7 +144,7 @@ totalBorrowRate = (B1 × U1 + B2 × U2 + B3 × U3) / totalUtilization
 **Where**
 
 - `B1`, `B2`, `B3` = Borrow rates for leverage levels different category
-- `U1`, `U2`, `U3` = Utilization (borrowed amount / total available) for each borrower type
+- `U1`, `U2`, `U3` = Utilisation (borrowed amount / total available) for each borrower type
 - `totalUtilization = U1 + U2 + U3`
 
 
@@ -170,12 +170,12 @@ Paystream uses index ratios to calculate interest and yield. Borrowers pay inter
 interest = principal * (BLI_now_k / BLI_entry_k - 1)
 ```
 
-#### b. yield earned by lender
+#### b. yield earned by the lender
 
 ```
 Yield  = deposit × (LLI_now / LLI_entry - 1)
 ```
 
 
-**Note** - snapshot is taken every time the borrower takes a leverage / loan for the respective borrowed amount 
+**Note** - snapshot is taken every time the borrower takes a leverage/loan for the respective borrowed amount 
 -Both *LLI* (for lenders) and *BLI₁ / BLI₂ / BLI₃* (for borrowers) are updated at regular intervals, ideally per block. 

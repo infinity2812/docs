@@ -3,17 +3,17 @@ title: "Rebalancing & Strategies"
 description: "Rebalancing policy and available strategies in PayStream's LLP."
 ---
 
-Rebalancing is a mechanism that helps users maintain the optimal token ratio and price point within their leveraged positions. This not only reduces the chances of impermanent loss and minimizes the risk of liquidation during market volatility, but also enables users to maximize returns without the need for constant manual adjustments. If enabled, rebalancing is triggered automatically by an off-chain monitoring system—the same system responsible for initiating liquidations. A small fee is charged each time rebalancing is executed.
+Rebalancing is a mechanism that helps users maintain the optimal token ratio and price point within their leveraged positions. This not only reduces the chances of impermanent loss and minimises the risk of liquidation during market volatility, but also enables users to maximise returns without the need for constant manual adjustments. If enabled, rebalancing is triggered automatically by an off-chain monitoring system—the same system responsible for initiating liquidations. A small fee is charged each time rebalancing is executed.
 
-## Rebalancing Policy :  Default Behavior
+## Rebalancing Policy:  Default Behaviour
 
 - **No rebalancing is applied by default**
 - Users can choose to enable rebalancing for their positions, allowing the system to automatically maintain optimal token ratios and price points. A small fee is applied based on the trigger option selected by the user.
 - Users retain full control over **non-leveraged positions**
     - They can **enter and exit** whenever they choose
-    - No automated intervention unless opted-in
+    - No automated intervention unless opted in
 - For **leveraged positions -**
-    1. liquidation mechanism kicks in. 
+    1. The liquidation mechanism kicks in. 
     2. **Add more margin** to maintain healthy LTV
     3. Accept the risk of **partial or full liquidation** 
 
@@ -21,7 +21,7 @@ Rebalancing is a mechanism that helps users maintain the optimal token ratio and
 
 ## Strategies
 
-The following strategy will be introduced in the initial version of llp.
+The following strategy will be introduced in the initial version of LLP.
 
 ### Spot LP Strategy
 A straightforward strategy where users provide equal value of two tokens into a liquidity pool.
@@ -38,12 +38,12 @@ In this strategy, users provide liquidity using only one token, instead of a 50/
 - Ideal for users who believe strongly in one token and don’t want to sell or split their capital.
 - Reduces capital complexity and volatility risk, especially during rapid price movements.
 - Users choose the price range they want to cover.
-- Auto-rebalancing not supported, and positions require more manual control.
+- Auto-rebalancing is not supported, and positions require more manual control.
 
 ### Dual Bin Strategy
 This is the default strategy used by Cleopetra. It combines two positions for smarter liquidity deployment:
 
-- The Main Position holds most liquidity, optimized for fee generation.
+- The Main Position holds most liquidity, optimised for fee generation.
 - The Secondary Position is dynamically placed depending on the post-rebalance token imbalance (e.g., lower or upper range).
 - Helps prevent unused tokens from sitting idle by always keeping them active in fee-earning zones.
 - Efficient for volatile markets and reduces slippage during imbalance.
@@ -52,23 +52,23 @@ This is the default strategy used by Cleopetra. It combines two positions for sm
 A dynamic DCA-style strategy using SOL as the base asset.
 
 - Gradually sells SOL for another token (e.g., USDC) as price increases across a custom range.
-- Liquidity is placed at the edges of the price range, maximizing fee capture during volatility.
+- Liquidity is placed at the edges of the price range, maximising fee capture during volatility.
 - Useful for those who want to sell into strength and reduce SOL exposure over time.
 - Highly capital-efficient and good for high-volatility markets.
 
 ### Bid-Ask (Token) Strategy
 Same logic as SOL Bid-Ask, but works in reverse.
 
-- Starts with tokens like BONK or JUP and gradually sells them for SOL as price rises.
+- Starts with tokens like BONK or JUP and gradually sells them for SOL as the price rises.
 - Ideal for profit-taking and handling token volatility gracefully.
 - Helps reduce slippage and capture more value at higher price bands.
 - Great for farming volatile tokens with an exit strategy built-in.
 
 ### Curve LP Strategy
-A strategy optimized for stablecoin pairs or low-volatility tokens.
+A strategy optimised for stablecoin pairs or low-volatility tokens.
 
 - Concentrates liquidity around the current market price, reducing slippage and improving trade efficiency.
-- Liquidity forms a “curve” shape  more depth in the center, less at the edges.
+- Liquidity forms a “curve” shape with more depth in the centre, less at the edges.
 - Ideal for tight-range trading pairs like USDC/USDT or low-volatility markets.
 - Reduces capital waste and improves fee capture near equilibrium prices.
 
@@ -82,7 +82,7 @@ A variation of Spot LP with uniform liquidity spread across the full price range
 
 ---
 
-**NOTE** - If opt for rebalancing there are different options, with respect to the choice of the time of rebalancing.
+**NOTE** - If you opt for rebalancing, there are different options with respect to the choice of the time of rebalancing.
 
 Only the following strategies are eligible for leverage:
 

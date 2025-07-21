@@ -13,7 +13,7 @@ Borrowers can avoid liquidation by **increasing their margin**, either:
 - **Manually**, by adding more funds to the position, or
 - **Automatically**, by enabling **auto-mode**, provided their wallet maintains sufficient balance. (in future)
 
-To manage risk effectively, the protocol employs multiple layers of protection beyond full liquidation. Partial liquidation is triggered when an individual borrower’s LTV crosses a certain threshold, allowing only a portion of their position to be sold to bring their LTV back to a safer range. In extreme cases where overall pool utilization exceeds safe limits, the protocol initiates deleveraging, proportionally reducing all borrower debts to restore system-wide liquidity. Borrowers can also avoid liquidation altogether by increasing their margin, either manually by adding more collateral or (in the future) automatically through wallet-based top-ups.
+To manage risk effectively, the protocol employs multiple layers of protection beyond full liquidation. Partial liquidation is triggered when an individual borrower’s LTV exceeds a certain threshold, allowing only part of their position to be sold to bring their LTV back into a safer range. In extreme cases where overall pool utilisation exceeds safe limits, the protocol initiates deleveraging, proportionally reducing all borrower debts to restore system-wide liquidity. Borrowers can also avoid liquidation entirely by increasing their margin, either manually by adding more collateral or (in the future) automatically through wallet-based top-ups.
 
 
 ![llp-liq](./images/llp-liq.png)
@@ -29,11 +29,11 @@ To manage risk effectively, the protocol employs multiple layers of protection b
     ```markdown
     Debt = principal × (BLI_now / BLI_entry)
     
-    note - everywhere debt is constantly increasing using 
+    Note - everywhere, debt is constantly increasing using 
     this formula
     ```
     
-- If the LTV gets too high (e.g., 85–90%), it means the borrower's position is no longer safely over-collateralized and is at risk.
+- If the LTV gets too high (e.g., 85–90%), it means the borrower's position is no longer safely over-collateralised and is at risk.
 
 ---
 
@@ -43,7 +43,7 @@ Partial liquidation is a protocol-level risk-mitigation step that sells a portio
 The sale proceeds are used to repay part of the borrower’s debt, pushing the LTV back into a safer range.
 
 
-- Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders fund from being completely lost** , offering a chance to stabilize their position **before full liquidation** is triggered  especially during volatile market conditions.
+- Partial liquidation is designed as a **borrower-friendly safeguard and a way to safeguard lenders' funds from being completely lost**, offering a chance to stabilise their position **before full liquidation** is triggered, especially during volatile market conditions.
 
 - **Trigger**: When an individual borrower's **LTV** crosses the **partial threshold** (e.g., 85%).
 - **Action**: A calculated portion of their LP position is closed. The resulting assets are used to repay part of the debt.
@@ -68,14 +68,6 @@ Position to liquidate = 0.8 x borrowed amount
 
 *Note: `borrowed amount = debt` in calculations.*
 
-### State-Based Model (Simple Logic)
-
-For each position, track a flag: `has_been_partially_liquidated`.
-
-**Initial State:**
-
-- `has_been_partially_liquidated = false`
-
 ### Example Scenario
 
 Let’s say:
@@ -85,10 +77,10 @@ Let’s say:
 - `safe_threshold = 70 %`
 
 1. Borrower LTV hits 80 %
-    - Partial liquidation triggers, flag is set.
+    - Partial liquidation triggers, the flag is set.
 2. Borrower does **nothing**, LTV reaches 91 %
     - Full liquidation triggers.
-3. If after partial liquidation borrower adds more collateral, LTV drops to 65 %
+3. If, after partial liquidation, the borrower adds more collateral, the LTV drops to 65 %
     - System resets the flag; they get another shot.
 
 ### Trigger Rules
@@ -107,15 +99,15 @@ Let’s say:
 ![develarage Workflow](./images/Deleverage-workflow.png)
 
 Deleveraging is a protocol-level mechanism used to reduce the leverage across all borrowers in a pool when risk becomes too high.
-It forces partial repayments by all borrowers proportionally, helping the protocol bring utilization back to a safe level.
+It forces partial repayments by all borrowers proportionally, helping the protocol bring utilisation back to a safe level.
 
-we deleverage that is reduce the levergae (lenders fund that the borrower have borrowed) :
+We deleverage, which is to reduce the leverage (lenders' funds that the borrower has borrowed) :
 
 - To ensure enough liquidity is available for lenders to withdraw their funds at any time.
 
 - To reduce systemic risk in the pool by lowering the average leverage across all borrowers.
 
-- **Trigger**: Utilization of the lending pool exceeds a critical limit (e.g., 95%) and lenders may not be able to withdraw.
+- **Trigger**: Utilisation of the lending pool exceeds a critical limit (e.g., 95%) and lenders may not be able to withdraw.
 - **Action**: A portion of **all borrower positions** are liquidated proportionally, e.g., user 1 has $200 borrowed, user 2 $50 → both repay 10% of their debt.
 
 
@@ -137,6 +129,6 @@ liquidateᵢ = Debtᵢ × (ΔB / B)
     
     `percentage_to_repay = ΔB / B`
     
-- After liquidation each borrower’s new debt is
+- After liquidation, each borrower’s new debt is
     
     `Debtᵢ_new = Debtᵢ − liquidateᵢ` 

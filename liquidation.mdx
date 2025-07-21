@@ -12,7 +12,7 @@ Liquidation is a critical component of Paystream’s risk management system. It 
 
 Paystream employs a liquidation mechanism, triggered when a borrower’s Loan-To-Value (LTV) ratio exceeds a predefined threshold known as the Liquidation LTV (LLTV). This system is designed to be both reliable and efficient.
 
-To enhance this process, Paystream also operates an in-house automated liquidator bot. This bot continuously monitors the protocol and acts alongside external liquidators to ensure timely and consistent liquidation executionespecially in cases where external participation may be delayed or insufficient.
+To enhance this process, Paystream also operates an in-house automated liquidator bot. This bot continuously monitors the protocol and acts alongside external liquidators to ensure timely and consistent liquidation execution, especially in cases where external participation may be delayed or insufficient.
 
 ---
 
@@ -38,7 +38,7 @@ Collateral Value = Collateral Amount × Oracle Price / Oracle Price Scale
 
 ## Health Factor
 
-The Health Factor is a normalized measure of a position’s risk. A value greater than 1.0 indicates a safe position, while values below 1.0 mark it as liquidatable.
+The Health Factor is a normalised measure of a position’s risk. A value greater than 1.0 indicates a safe position, while values below 1.0 mark it as liquidatable.
 
 **Health Factor Formula:**
 
@@ -63,7 +63,7 @@ A borrower’s position becomes eligible for liquidation when their LTV exceeds 
 
 **Example:**
 If a borrower supplies $100 of collateral in a market with an LLTV of 86%:
-- The position is safe as long as borrowed value ≤ $86
+- The position is safe as long as the borrowed value ≤ $86
 - It becomes liquidatable when borrowed value > $86
 
 ---

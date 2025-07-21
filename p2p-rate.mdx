@@ -11,10 +11,10 @@ In Paystream, since lenders and borrowers are directly matched through the P2P e
 - Borrowers pay less than they would in the pool.
 - No value is lost to intermediaries.
 
-This is one of the core benefits of Paystream's design  capital efficiency without protocol-imposed friction.
+This is one of the core benefits of Paystream's design: capital efficiency without protocol-imposed friction.
 
 ## P2P Rate Calculation
-When a borrower is matched with a lender, the interest rate they pay is determined by the P2P rate, which is derived from the current APYs of the selected optimizer’s underlying protocol.
+When a borrower is matched with a lender, the interest rate they pay is determined by the P2P rate, which is derived from the current APYs of the selected optimiser’s underlying protocol.
 
 The P2P rate is calculated as a weighted average of the supply and borrow APYs from the underlying pool:
 
@@ -44,7 +44,7 @@ So:
 - The borrower pays 11.5%, which is 3.5% lower than the original 15%.
 - The lender earns 11.5%, which is 3.5% higher than the original 8%.
 
-This structure makes the match beneficial for both sides, increasing returns for lenders while reducing costs for borrowers  a true win-win.
+This structure makes the match beneficial for both sides, increasing returns for lenders while reducing costs for borrowers, a true win-win.
 
 ## Per-Block Interest Accrual
 Interest in Paystream is calculated per block, rather than per second or per epoch. This allows for more accurate and real-time tracking of both borrower debt and lender yield. It also enables granular control over positions, especially useful in dynamic Solana environments where block times are fast and continuous.
@@ -69,12 +69,12 @@ Avg APY = 0.6 × 11.5% + 0.4 × 8% = 10.1%
 ```
 This reflects the actual blended return the lender earns across both yield sources, depending on how much of their liquidity is matched at any given moment.
 
-## Full Capital Utilization
-Paystream’s P2P matching model allows for 100% capital utilization when a lender is matched. Unlike pool-based systems where idle capital often sits unused, Paystream ensures that every dollar matched P2P is actively generating yield.
+## Full Capital Utilisation
+Paystream’s P2P matching model allows for 100% capital utilisation when a lender is matched. Unlike pool-based systems where idle capital often sits unused, Paystream ensures that every dollar matched P2P is actively generating yield.
 
 In Paystream:
 - Matched funds are immediately deployed to borrowers.
 - Unmatched funds earn base yield in the fallback protocol until needed.
 - As soon as borrower demand appears, those funds are redirected for higher-yield P2P use.
 
-This approach optimizes protocol-level capital flow and makes Paystream one of the most efficient ways to deploy or borrow capital on-chain. 
+This approach optimises protocol-level capital flow and makes Paystream one of the most efficient ways to deploy or borrow capital on-chain. 
