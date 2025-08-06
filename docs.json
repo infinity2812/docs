@@ -64,17 +64,17 @@
       "anchors": [
         {
           "anchor": "Whitepaper",
-          "href": "https://www.paystream.finance/whitepaper.pdf",
+          "href": "https://www.Paystream.finance/whitepaper.pdf",
           "icon": "book-open-cover"
         },
         {
           "anchor": "Community",
-          "href": "https://t.me/paystreamfi",
+          "href": "https://t.me/Paystreamfi",
           "icon": "telegram"
         },
         {
-          "anchor": "PayStream.finance",
-          "href": "https://paystream.finance",
+          "anchor": "Paystream.finance",
+          "href": "https://Paystream.finance",
           "icon": "globe"
         }
       ]
@@ -83,25 +83,25 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "link": "https://paystream.finance"
+    "link": "https://Paystream.finance"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:paystreamlabs@gmail.com"
+        "href": "mailto:Paystreamlabs@gmail.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "App",
-      "href": "https://app.paystream.finance"
+      "href": "https://app.Paystream.finance"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/paystreamlabs",
-      "linkedin": "https://linkedin.com/company/paystreamlabs"
+      "x": "https://x.com/Paystreamlabs",
+      "linkedin": "https://linkedin.com/company/Paystreamlabs"
     }
   },
   "custom": {

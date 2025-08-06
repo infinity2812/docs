@@ -7,12 +7,12 @@ date: "May 2025"
 
 **Prepared By:**  
 Maushish Yadav  
-_DeFi Security Researcher | Auditor | Founder @PayStream Labs_  
+_DeFi Security Researcher | Auditor | Founder @Paystream Labs_  
 
 ## Audit Overview
 
-This report details the results of a static analysis conducted on the PayStream DeFi lending protocol using the tools **X-Ray (v0.0.6)** and **Radar**.  
-Our audit spanned three primary program modules: `drift_optimizer`, `lib`, and `paystream-v1`.  
+This report details the results of a static analysis conducted on the Paystream DeFi lending protocol using the tools **X-Ray (v0.0.6)** and **Radar**.  
+Our audit spanned three primary program modules: `drift_optimizer`, `lib`, and `Paystream-v1`.  
 The primary objective was to identify unsafe patterns, missing validations, and account mismanagement across Solana smart contracts that constitute the core protocol.
 
 ## Tooling & Methodology
@@ -40,7 +40,7 @@ The primary objective was to identify unsafe patterns, missing validations, and 
 - **Vulnerabilities:** None  
 - **Status:** All logic modules and dependencies passed pointer and transformation analysis cleanly.
 
-### Core Protocol (`paystream-v1`)
+### Core Protocol (`Paystream-v1`)
 
 - **Total Detected:** 33 vulnerabilities  
 - **Patterns Observed:**  
@@ -71,6 +71,6 @@ The primary objective was to identify unsafe patterns, missing validations, and 
 
 ## Conclusion
 
-While PayStream demonstrates significant innovation in on-chain lending and liquidity optimization, security hardening remains crucial before scaling further.  
+While Paystream demonstrates significant innovation in on-chain lending and liquidity optimization, security hardening remains crucial before scaling further.  
 Patching signer and owner validation gaps should be prioritized to mitigate protocol-level risks, particularly around token streaming and borrowing logic.  
 A formal verification of economic invariants and runtime constraints is recommended before public audits.
