@@ -10,7 +10,7 @@ description: "Paystream is powered by two core components: a Peer-to-Peer (P2P) 
 
 - **P2P Matching Engine**: Borrowers are directly matched with lenders in real-time, ensuring optimal interest rates for both parties without relying solely on pooled liquidity.
 
-- **Fallback to Liquidity Pools**: When a direct match isn't available, the system utilises external liquidity platforms like Kamino to fulfil requests instantly. This ensures continuous lending opportunities and yield for idle lender capital.
+- **Routing idle liquidity**: When a direct match isn't available, the system routes idle liquidty to LLP pools or the fallback pools , ensuring highest yield on the idle liquidty and zero idle capital.
 
 - **Collateralised Borrowing**: Borrowers deposit collateral to borrow funds. This collateral is deployed into the underlying protocol so that it earns while backing the loan, maximising capital efficiency.
 

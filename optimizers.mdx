@@ -1,17 +1,15 @@
 ---
-title: "Optimisers"
+title: "Fallback Pools"
 description: "Learn about the optimiser mechanisms in PayStream."
 ---
 
 ![Optimizers Workflow](./images/optimizers-workflow.png)
 
+In Paystream, idle capital is never left idle. When a lender’s funds are not immediately matched with a borrower in the P2P market, they are automatically deployed to the LLP lending pool and diversified fallback pools. This ensures the capital continues to generate yield at all times.
 
-In Paystream, an **optimiser** is a strategy layer that determines where unmatched funds are deposited to earn passive yield when there’s no active P2P match. Optimisers are directly tied to the **underlying protocols** they integrate with, meaning each optimiser routes idle liquidity to a specific DeFi protocol where it can generate fallback interest until matched with a borrower.
+The LLP lending pool acts as the primary yield engine, deploying liquidity into leveraged positions in liquidity pools, while fallback pools serve as secondary destinations that provide yields on idle liquidty. Together, this structure eliminates idle liquidity, maintains continuous capital utilisation, and maximises APY for lenders.
 
-We’re building a suite of optimisers on top of leading Solana protocols, including Drift, Kamino, MarginFi and Save Finance, with Drift currently live.
-
-When a user supplies funds into Paystream, they’ll be able to choose which optimiser to use. If their capital is not instantly matched via P2P, the funds are automatically deposited into the selected protocol, earning yield while waiting to be matched.
-
+This dynamic routing means lenders enjoy consistent returns, LP users access leveraged capital efficiently, and the overall system maintains a self‑sustaining capital flywheel with zero idle capital.
 ---
 
 Alongside optimisers, Paystream organises liquidity using **markets**, each associated with a specific token (e.g., USDC, SOL, JITO) and a specific optimiser. That means we don’t just have “a USDC market”, we may have multiple USDC markets, each tied to a different optimiser like Kamino or Drift.
