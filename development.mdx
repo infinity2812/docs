@@ -11,7 +11,7 @@ Interest rate risk arises from the potential for market rates to diverge from th
 
 **Liquidity Risk**
 
-The diverse range of collateral accepted by Paystream can expose users to liquidity risk. Different tokens have varying levels of underlying liquidity and availability across trading venues. This risk of illiquidity of collateral should be considered when lending.
+The diverse range of collateral accepted by Paystream can expose users to liquidity risk. Different tokens have varying levels of underlying liquidity and availability across trading venues. The risk of illiquidity of collateral should be considered when lending.
 
 **Liquidation Risk**
 
@@ -27,8 +27,9 @@ Loans that are not set up within 7 days automatically, or if there are bot issue
 
 **Smart Contract Risk**
 
-Contracts inherently risk containing vulnerabilities that can be exploited by attackers, including compromised or manipulated external dependencies and economic incentives. As the contracts are not audited, we have implemented a SEAT functionality which allows only whitelisted addresses to interact with the protocol
+Contracts inherently risk containing vulnerabilities that can be exploited by attackers, including compromised or manipulated external dependencies and economic incentives. As the contracts are not audited, we have implemented a SEAT functionality that allows only whitelisted addresses to interact with the protocol
 
 **Oracle Price Risk**
 
 Any Paystream loan may be connected to an oracle, as established by the borrower or lender in the initial order. For all loans on Paystream, **Pyth** has been determined by the Paystream team. All oracles are subject to price manipulation or incorrect inputs, falsely reducing or increasing asset values, leading to premature liquidations or bad debt. Oracle quality, including safety, liveness, centralised control, and precision and frequency of price updates, should be considered in assessing risk.
+
