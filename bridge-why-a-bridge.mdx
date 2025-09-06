@@ -1,0 +1,32 @@
+---
+title: "Why a Bridge?"
+description: "Why we decide to build a bridge."
+---
+
+# Why a Bridge?
+
+## Why a bridge  
+
+Blockchains are isolated execution environments: tokens and state on Chain A are not usable on Chain B without an inter-chain primitive. Bridges implement that primitive via patterns such as lock-mint, burn-mint, relayer/forwarder, and optimistic- or bond-based settlement. Bridges provide the minimal guarantees required for cross-chain value transfer (finality assumptions, canonical proofs, or relayer incentives), but each bridge differs in: settlement model, supported token formats, liquidity model, fee structure, and latency profile. Because these differences affect final received amount and execution risk, bridges are required infrastructure but are not interchangeable at the protocol level.
+
+## Why a bridge aggregator  
+
+A single-bridge strategy exposes the user to a provider's specific fee schedule, available liquidity, and latency. An aggregator actively removes that single-point dependency by running parallel discovery, where multiple providers (SDK/API/widget) are queried concurrently and quotes are normalized. Instead of headline fees, total-cost comparison is applied, evaluating `provider_fee + on-chain gas + estimated_slippage` on a common base (USD or native). The system supports composite routing by synthesizing multi-hop routes across different providers when the composite net output is superior to any single provider path. For size-sensitive transfers, order-splitting is employed, splitting amounts across multiple providers according to liquidity and slippage curves to improve realized price. Hard filtering is applied to exclude routes that fail security or liquidity thresholds. The result is that the aggregator converts fragmented bridge supply into a competitive market so the user receives the lowest *net* cost for a requested transfer.
+
+## Why Paystream — how we minimize total user cost
+
+**Key benefits:**
+
+* **Best Rates:** Always routes to the lowest total cost (fees + gas + slippage).
+* **Non-Custodial & Safe:** You stay in control, Paystream only coordinates.
+* **Future-Proof:** Privacy-preserving routes and new providers are coming soon.
+
+Paystream minimizes net cost through a deterministic, instrumented routing pipeline. Each provider is integrated via a thin adapter that normalizes quotes into a common schema, making costs directly comparable. We aggregate live quotes from bridges like deBridge and Garden and multi-source aggregators such as LI.FI, Rango, and Rubic, ensuring wide coverage and competition.
+
+Routing is **cost-first**: every route is scored on total user outlay (`provider_fee + gas + estimated_slippage`), with latency and risk factored in but weighted less. Composite paths (multi-hop) and split allocations across providers are evaluated to reduce slippage and maximize the final received amount.
+
+Before execution, quotes are revalidated or route-locked to avoid stale prices. If the final terms exceed the user's slippage tolerance, execution is safely aborted and alternatives are shown. Execution remains fully non-custodial — you sign every transaction — while Paystream coordinates submission through provider relayers or bridge contracts.
+
+Operational safeguards include idempotency (`request_id`), provider vetting (audits, history, SLA), and monitoring of savings, failure rates, and latency. Transient failures retry automatically; persistent issues trigger failover to the next-best route or a clear error report.
+
+Looking ahead, Paystream will integrate privacy-focused protocols (e.g., RAILGUN, Aztec) as optional adapters, so users can choose routes that protect both value and privacy without losing optimization.

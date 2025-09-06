@@ -41,6 +41,14 @@
             ]
           },
           {
+            "group": "Bridge",
+            "pages": [
+              "bridge-introduction",
+              "bridge-how-it-works",
+              "bridge-why-a-bridge"
+            ]
+          },
+          {
             "group": "Resources",
             "pages": [
               "how-to-use",
