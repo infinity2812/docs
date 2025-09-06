@@ -6,8 +6,8 @@ Blockchains are isolated execution environments: tokens and state on Chain A are
 
 ## Why a bridge aggregator  
 
-A single-bridge strategy locks users into one provider’s fees, liquidity, and latency. An aggregator removes this dependency through parallel discovery, querying multiple providers at once and normalizing quotes. Instead of headline fees, it compares total cost — provider_fee + gas + slippage — on a common base. The system will also supports composite routing, combining multi-hop paths when they yield better output, and order-splitting, distributing large transfers across providers to reduce slippage. Hard filtering excludes routes that fail security or liquidity checks. The result is a competitive marketplace where users consistently get the lowest net cost for their transfers.
-## Why Paystream — how we minimize total user cost
+A single-bridge strategy locks users into one provider’s fees, liquidity, and latency. An aggregator removes this dependency through parallel discovery, querying multiple providers at once and normalizing quotes. Instead of headline fees, it compares total cost  provider_fee + gas + slippage  on a common base. The system will also supports composite routing, combining multi-hop paths when they yield better output, and order-splitting, distributing large transfers across providers to reduce slippage. Hard filtering excludes routes that fail security or liquidity checks. The result is a competitive marketplace where users consistently get the lowest net cost for their transfers.
+## Why Paystream  how we minimize total user cost
 
 **Key benefits:**
 
@@ -19,7 +19,7 @@ Paystream minimizes costs through a deterministic routing pipeline. Each provide
 
 Routing is cost-first: every path is scored on total outlay (fees + gas + slippage), with latency and risk considered but secondary. The system evaluates direct, multi-hop, and split routes to reduce slippage and maximize received value.
 
-Before execution, quotes are revalidated or locked; if terms move beyond your slippage tolerance, the transfer is safely stopped and updated options are shown. Execution is fully non-custodial — you sign transactions, Paystream only coordinates.
+Before execution, quotes are revalidated or locked; if terms move beyond your slippage tolerance, the transfer is safely stopped and updated options are shown. Execution is fully non-custodial  you sign transactions, Paystream only coordinates.
 
 Safeguards include idempotent request IDs, provider vetting, and continuous monitoring of savings, failures, and latency. Transient issues retry automatically; persistent ones trigger failover to the next-best route or return a clear error.
 
