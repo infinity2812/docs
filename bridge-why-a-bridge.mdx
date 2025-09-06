@@ -6,8 +6,7 @@ Blockchains are isolated execution environments: tokens and state on Chain A are
 
 ## Why a bridge aggregator  
 
-A single-bridge strategy exposes the user to a provider's specific fee schedule, available liquidity, and latency. An aggregator actively removes that single-point dependency by running parallel discovery, where multiple providers (SDK/API/widget) are queried concurrently and quotes are normalized. Instead of headline fees, total-cost comparison is applied, evaluating `provider_fee + on-chain gas + estimated_slippage` on a common base (USD or native). The system supports composite routing by synthesizing multi-hop routes across different providers when the composite net output is superior to any single provider path. For size-sensitive transfers, order-splitting is employed, splitting amounts across multiple providers according to liquidity and slippage curves to improve realized price. Hard filtering is applied to exclude routes that fail security or liquidity thresholds. The result is that the aggregator converts fragmented bridge supply into a competitive market so the user receives the lowest *net* cost for a requested transfer.
-
+A single-bridge strategy locks users into one provider’s fees, liquidity, and latency. An aggregator removes this dependency through parallel discovery, querying multiple providers at once and normalizing quotes. Instead of headline fees, it compares total cost — provider_fee + gas + slippage — on a common base. The system will also supports composite routing, combining multi-hop paths when they yield better output, and order-splitting, distributing large transfers across providers to reduce slippage. Hard filtering excludes routes that fail security or liquidity checks. The result is a competitive marketplace where users consistently get the lowest net cost for their transfers.
 ## Why Paystream — how we minimize total user cost
 
 **Key benefits:**
@@ -16,12 +15,12 @@ A single-bridge strategy exposes the user to a provider's specific fee schedule,
 * **Non-Custodial & Safe:** You stay in control, Paystream only coordinates.
 * **Future-Proof:** Privacy-preserving routes and new providers are coming soon.
 
-Paystream minimizes net cost through a deterministic, instrumented routing pipeline. Each provider is integrated via a thin adapter that normalizes quotes into a common schema, making costs directly comparable. We aggregate live quotes from bridges like deBridge and Garden and multi-source aggregators such as LI.FI, Rango, and Rubic, ensuring wide coverage and competition.
+Paystream minimizes costs through a deterministic routing pipeline. Each provider integrates via a thin adapter that normalizes quotes, allowing direct comparison across bridges like deBridge, Garden, and aggregators such as LI.FI, Rango, and Rubic.
 
-Routing is **cost-first**: every route is scored on total user outlay (`provider_fee + gas + estimated_slippage`), with latency and risk factored in but weighted less. Composite paths (multi-hop) and split allocations across providers are evaluated to reduce slippage and maximize the final received amount.
+Routing is cost-first: every path is scored on total outlay (fees + gas + slippage), with latency and risk considered but secondary. The system evaluates direct, multi-hop, and split routes to reduce slippage and maximize received value.
 
-Before execution, quotes are revalidated or route-locked to avoid stale prices. If the final terms exceed the user's slippage tolerance, execution is safely aborted and alternatives are shown. Execution remains fully non-custodial — you sign every transaction — while Paystream coordinates submission through provider relayers or bridge contracts.
+Before execution, quotes are revalidated or locked; if terms move beyond your slippage tolerance, the transfer is safely stopped and updated options are shown. Execution is fully non-custodial — you sign transactions, Paystream only coordinates.
 
-Operational safeguards include idempotency (`request_id`), provider vetting (audits, history, SLA), and monitoring of savings, failure rates, and latency. Transient failures retry automatically; persistent issues trigger failover to the next-best route or a clear error report.
+Safeguards include idempotent request IDs, provider vetting, and continuous monitoring of savings, failures, and latency. Transient issues retry automatically; persistent ones trigger failover to the next-best route or return a clear error.
 
 Looking ahead, Paystream will integrate privacy-focused protocols (e.g., RAILGUN, Aztec) as optional adapters, so users can choose routes that protect both value and privacy without losing optimization.
