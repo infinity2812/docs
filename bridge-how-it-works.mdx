@@ -1,9 +1,9 @@
 ---
 title: "Technical overview"
-description: "How are we ensuring best rates."
+description: "How are we ensuring the best rates"
 ---
 
-Paystream Bridge aggregator is designed as a routing engine that guarantees users the best available rates for cross-chain transfers. Instead of being a bridge itself, Paystream integrates trusted partners like deBridge and Garden and queries them directly for quotes. Over time, more bridges will be added  expanding liquidity sources, increasing competition between providers, and ensuring users always get the most cost-efficient path.
+Paystream Bridge aggregator is designed as a routing engine that guarantees users the best available rates for cross-chain transfers. Instead of being a bridge itself, Paystream integrates trusted partners like deBridge and Garden and queries them directly for quotes. Over time, more bridges will be added, expanding liquidity sources, increasing competition between providers, and ensuring users always get the most cost-efficient path.
 
 ---
 
@@ -17,7 +17,7 @@ Once your request is submitted, the bridge instantly reaches out to multiple pro
 
 ## Step 3: Route Generation
 
-With all quotes in hand, the system generates possible transfer routes. These can be direct (single-hop) or slightly more complex (multi-hop) depending on what delivers better results. For each route, Paystream calculates the total cost, estimated speed, liquidity depth, and reliability. The routes are then scored, and the best option is selected, though alternatives may also be presented to you.
+With all quotes in hand, the system generates possible transfer routes. These can be direct (single-hop) or slightly more complex (multi-hop), depending on what delivers better results. For each route, Paystream calculates the total cost, estimated speed, liquidity depth, and reliability. The routes are then scored, and the best option is selected, though alternatives may also be presented to you.
 
 ## Step 4: Pre-Execution Check
 
@@ -31,4 +31,4 @@ Finally, the system builds and carries out the execution plan. This could mean b
 
 ## privacy
 
-Privacy-focused protocols will be added as additional adapters and scored like any provider (route attribute `privacy=true`). Integration is additive  privacy routes appear as alternatives and are factored into scoring without changing the core pipeline.
+Privacy-focused protocols will be added as additional adapters and scored like any provider (route attribute `privacy=true`). Integration is additive; privacy routes appear as alternatives and are factored into scoring without changing the core pipeline.
