@@ -3,15 +3,7 @@ title: "How Bridge Works"
 description: "Technical overview of Paystream's cross-chain bridge mechanism."
 ---
 
-# How Bridge Works
-
 Paystream Bridge is designed as a routing engine that guarantees users the best available rates for cross-chain transfers. Instead of being a bridge itself, Paystream integrates trusted partners like deBridge and Garden and queries them directly for quotes. Over time, more bridges will be added — expanding liquidity sources, increasing competition between providers, and ensuring users always get the most cost-efficient path.
-
-## Bridge Architecture
-
-### Core Flow — Technical (concise)
-
-A stripped, implementation-focused summary of Paystream Bridge's routing & execution pipeline.
 
 ---
 ## Bridge Architecture
@@ -42,6 +34,6 @@ Finally, the system builds and carries out the execution plan. This could mean b
 
 ---
 
-## Brief privacy note
+## privacy
 
 Privacy-focused protocols will be added as additional adapters and scored like any provider (route attribute `privacy=true`). Integration is additive — privacy routes appear as alternatives and are factored into scoring without changing the core pipeline.
