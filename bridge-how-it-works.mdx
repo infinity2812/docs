@@ -1,0 +1,34 @@
+---
+title: "Technical overview"
+description: "How are we ensuring the best rates"
+---
+
+Paystream Bridge aggregator is designed as a routing engine that guarantees users the best available rates for cross-chain transfers. Instead of being a bridge itself, Paystream integrates trusted partners like deBridge and Garden and queries them directly for quotes. Over time, more bridges will be added, expanding liquidity sources, increasing competition between providers, and ensuring users always get the most cost-efficient path.
+
+---
+
+## Step 1: Request Intake
+
+The process starts when you enter the details of your transfer: the token you want to send, the source and destination chains, the amount, and your slippage tolerance. A unique request ID is created to keep everything tracked and prevent duplicate executions.
+
+## Step 2: Fetching Quotes
+
+Once your request is submitted, the bridge instantly reaches out to multiple providers at the same time to gather live quotes. These quotes include expected output, fees, and estimated transfer time. The results are collected within a short time window and converted into a standard format so they can be compared fairly.
+
+## Step 3: Route Generation
+
+With all quotes in hand, the system generates possible transfer routes. These can be direct (single-hop) or slightly more complex (multi-hop), depending on what delivers better results. For each route, Paystream calculates the total cost, estimated speed, liquidity depth, and reliability. The routes are then scored, and the best option is selected, though alternatives may also be presented to you.
+
+## Step 4: Pre-Execution Check
+
+Before the transfer begins, the chosen route is revalidated to ensure nothing has changed. If the final quote differs too much from your slippage tolerance, the transaction will be stopped, and updated options will be shown so you're always in control.
+
+## Step 5: Execution
+
+Finally, the system builds and carries out the execution plan. This could mean bridging first, then swapping, or splitting the transfer across providers for better efficiency. You approve each step directly from your wallet, keeping the process non-custodial and secure. Transactions are then submitted, monitored until confirmed, and logged for transparency. Once complete, you receive a final receipt and a summary of the transfer.
+
+---
+
+## privacy
+
+Privacy-focused protocols will be added as additional adapters and scored like any provider (route attribute `privacy=true`). Integration is additive; privacy routes appear as alternatives and are factored into scoring without changing the core pipeline.
