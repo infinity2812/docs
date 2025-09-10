@@ -40,14 +40,14 @@
               "fees"
             ]
           },
-          {
-            "group": "Bridge",
-            "pages": [
-              "bridge-introduction",
-              "bridge-how-it-works",
-              "bridge-why-a-bridge"
-            ]
-          },
+          // {
+          //   "group": "Bridge",
+          //   "pages": [
+          //     "bridge-introduction",
+          //     "bridge-how-it-works",
+          //     "bridge-why-a-bridge"
+          //   ]
+          // },
           {
             "group": "Resources",
             "pages": [
