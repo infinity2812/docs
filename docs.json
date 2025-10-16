@@ -26,7 +26,13 @@
             "pages": [
               "matching-engine",
               "liquidation",
-              "p2p-rate",
+              "p2p-rate"
+            ]
+          },
+          {
+            "group": "Router",
+            "pages": [
+              "router",
               "optimizers"
             ]
           },
@@ -62,11 +68,6 @@
     ],
     "global": {
       "anchors": [
-        {
-          "anchor": "Whitepaper",
-          "href": "https://www.Paystream.finance/whitepaper.pdf",
-          "icon": "book-open-cover"
-        },
         {
           "anchor": "Community",
           "href": "https://t.me/Paystreamfi",

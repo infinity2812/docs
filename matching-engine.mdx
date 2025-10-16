@@ -38,22 +38,25 @@ This model achieves near-100% utilisation of matched funds: every P2P dollar len
 
 ---
 
-## Routing idle liquidty 
+## Routing idle liquidity
 
 ![Fallback Workflow](./images/fallback-workflow.png)
 
-The integration with underlying lending pools is a crucial aspect of Paystream’s design. Whenever a P2P match cannot be made or only partially fills, the unmatched portion of funds is automatically routed to the LLP lending pool and fallback pools.
+When there is no borrower available, Paystream's routing system immediately springs into action, deploying idle capital to earn the best possible yield.
+The routing engine intelligently allocates capital across multiple yield-generating strategies:
+- LLP lending pool for leveraged positions
+- integrated protocols like Drift, Kamino, MarginFi, and Jup lend
 
-This ensures that your capital never sits idle – it’s either matched P2P at an optimised rate or deployed to leveraged and fallback strategies that continue generating returns.
 
-Whenever the P2P queue can’t immediately pair lenders with borrowers, Paystream seamlessly redirects idle liquidity into the LLP lending pool, which channels it into leveraged strategies and to integrated fallback pools on leading Solana protocols such as Drift, Kamino, MarginFi, and Save Finance. This guarantees that capital keeps earning yield until a matching borrower arrives, maintaining full capital utilisation and eliminating idle liquidity.
-
+This routing approach ensures that every dollar of capital is continuously earning the highest possible yield, even when P2P matches aren't immediately available. 
 **Example:**
 
 1. **Alice (Lender) joins first**
-    - Alice deposits USDC into Paystream. Since no borrower is waiting, her funds are **automatically deposited into a fallback liquidity pool** (like Kamino or MarginFi) to ensure yield is earned.
+   - Alice deposits USDC into Paystream. Since no borrower is waiting, her funds are **automatically routed into other yield bearing pools**  to ensure yield is earned.
 2. **Bob (Borrower) joins later**
-    - When Bob borrows USDC, Paystream checks for matched P2P liquidity. It sees Alice’s funds in the fallback pool, **withdraws them instantly**, and **matches her to Bob** at an optimised P2P interest rate.
+   - When Bob borrows USDC, Paystream checks for matched P2P liquidity. It sees Alice's funds in the fallback pool, **withdraws them instantly**, and **matches her to Bob** at an optimised P2P interest rate.
+   
+    For detailed information about the routing system, see our [Router](/router) section.
 
 ---
 
@@ -61,4 +64,4 @@ Whenever the P2P queue can’t immediately pair lenders with borrowers, Paystrea
 
 Paystream is an overcollateralized lending system, meaning borrowers must supply collateral to secure their loans. Every borrower first **deposits assets as collateral**, which makes them a lender on that side of the market before they borrow another asset. Collateral deposits are deposited in the underlying pool – thus **even collateral can earn interest** while posted.
 
-Paystream enforces the same **Loan-to-Value (LTV)** ratios and **liquidation thresholds** as the underlying protocols it integrates with, to maintain consistency and security. In practice, this means that for each supported asset, there is a maximum borrowable percentage of its value (LTV), and if a borrower’s debt exceeds a certain percentage (the liquidation threshold, slightly higher than LTV), their position can be liquidated
+Paystream enforces the same **Loan-to-Value (LTV)** ratios and **liquidation thresholds** as the underlying protocols it integrates with, to maintain consistency and security. In practice, this means that for each supported asset, there is a maximum borrowable percentage of its value (LTV), and if a borrower’s debt exceeds a certain percentage (the liquidation threshold, slightly higher than LTV), their position can be liquidated.

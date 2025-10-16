@@ -1,17 +1,16 @@
 ---
 title: "Fallback Pools"
-description: "Learn about the optimiser mechanisms in Paystream."
+description: "Router deploys the capital to the integrated pools"
 ---
 
-![Optimizers Workflow](./images/optimizers-workflow.png)
 
-In Paystream, idle capital is never left idle. When a lender’s funds are not immediately matched with a borrower in the P2P market, they are automatically deployed to the LLP lending pool and diversified fallback pools. This ensures the capital continues to generate yield at all times.
 
-The LLP lending pool acts as the primary yield engine, deploying liquidity into leveraged positions in liquidity pools, while fallback pools serve as secondary destinations that provide yields on idle liquidity. Together, this structure eliminates idle liquidity, maintains continuous capital utilisation, and maximises APY for lenders.
+In Paystream, capital is never left idle. When a lender’s funds are not immediately matched with a borrower in the P2P market, they are automatically deployed to the LLP lending pool and diversified fallback pools. This ensures that the capital continues to generate yield at all times.
 
-This dynamic routing means lenders enjoy consistent returns, LP users access leveraged capital efficiently, and the overall system maintains a self‑sustaining capital flywheel with zero idle capital.
+The LLP lending pool serves as the primary yield engine, designed to deliver the highest returns in the Solana lending ecosystem by deploying liquidity into leveraged positions within liquidity pools. Meanwhile, fallback pools act as secondary destinations, providing yields on temporarily idle liquidity. Together, this structure eliminates idle capital, maintains continuous utilization, and maximizes APY for lenders.
+
+This dynamic routing enables lenders to enjoy consistent returns, allows LP users to access leveraged capital efficiently, and keeps the entire system running as a self-sustaining capital flywheel with zero idle capital.
+
+We plan to integrate only the most high-performing and secure third-party lending protocols as fallback destinations, including Kamino, MarginFi (Project 0), Drift, and Jupiter Lend.
+
 ---
-
-Alongside optimisers, Paystream organises liquidity using **markets**, each associated with a specific token (e.g., USDC, SOL, JITO) and a specific optimiser. That means we don’t just have “a USDC market”, we may have multiple USDC markets, each tied to a different optimiser like Kamino or Drift.
-
-Once a market becomes full, meaning it reaches a preset cap on the number of lenders and borrowers, Paystream will automatically **spin up a new market** for the same token and optimiser.  
