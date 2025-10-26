@@ -61,7 +61,7 @@
             "group": "Security",
             "pages": [
               "development",
-              "audits"
+              "static"
             ]
           }
         ]
