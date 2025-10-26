@@ -60,7 +60,8 @@
           {
             "group": "Security",
             "pages": [
-              "development"
+              "development",
+              "audits"
             ]
           }
         ]
